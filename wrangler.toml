@@ -1,6 +1,6 @@
 #:schema node_modules/wrangler/config-schema.json
 name = "chill-pill"
-compatibility_date = "2024-12-05"
+compatibility_date = "2024-12-16"
 pages_build_output_dir = ".svelte-kit/cloudflare"
 
 # Automatically place your workloads in an optimal location to minimize latency.
