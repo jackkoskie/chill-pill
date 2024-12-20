@@ -36,8 +36,5 @@
     "typescript-eslint": "^8.0.0",
     "vite": "^6.0.0",
     "wrangler": "^3.99.0"
-  },
-  "dependencies": {
-    "@inlang/paraglide-sveltekit": "^0.11.1"
   }
 }
