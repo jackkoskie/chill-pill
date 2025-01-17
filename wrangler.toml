@@ -83,3 +83,9 @@ pages_build_output_dir = ".svelte-kit/cloudflare"
 # [[env.production.kv_namespaces]]
 # binding = "MY_KV_NAMESPACE"
 # id = "<PRODUCTION_NAMESPACE_ID>"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "chill-pill"
+database_id = "753766f1-45ed-4318-9962-577f0de9c1cd"
+migrations_dir = "drizzle"
