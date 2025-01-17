@@ -1,5 +1,6 @@
 import { relations, type InferSelectModel } from 'drizzle-orm';
 import { int, sqliteTable, text } from 'drizzle-orm/sqlite-core';
+import { medications } from './medications';
 
 export const users = sqliteTable('users', {
 	id: int().primaryKey({ autoIncrement: true }).notNull(),
@@ -7,6 +8,8 @@ export const users = sqliteTable('users', {
 	email: text().notNull()
 });
 
-export const usersRelations = relations(users, ({ one, many }) => ({}));
+export const usersRelations = relations(users, ({ one, many }) => ({
+	medications: many(medications)
+}));
 
 export type User = InferSelectModel<typeof users>;
