@@ -73,8 +73,10 @@
 			  <span class="badge">New</span>
 			</a>
 		  </li>
-		  <li><a>Settings</a></li>
-		  <li><a>Logout</a></li>
+		  <li><a>Log Out</a></li>
+		  <li><a>Change Time Zone</a></li>
+		  <li><a>Personal Preferences</a></li>
+		  <li><a>About Us</a></li>
 		</ul>
 	  </div>
 	</div>
