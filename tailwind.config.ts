@@ -8,5 +8,9 @@ export default {
 		extend: {}
 	},
 
+	daisyui: {
+		themes: ['winter', 'luxury']
+	},
+
 	plugins: [daisyui]
 } satisfies Config;

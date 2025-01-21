@@ -1,2 +1,12 @@
-<h1>Welcome to Chill Pill</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<div class="center-container">
+  <span class="loading loading-dots loading-lg"></span>
+</div>
+
+<style>
+  .center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+  }
+</style>
