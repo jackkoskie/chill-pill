@@ -2,7 +2,7 @@
 	import '../app.css';
 	let { children } = $props();
 </script>
-<div class="navbar bg-base-300">
+<div class="navbar bg-base-300 sticky top-0">
 	<!-- Top left corner Website Title -->
 	<div class="">
 	  <a class="btn btn-ghost text-3xl">ChillPill</a>
