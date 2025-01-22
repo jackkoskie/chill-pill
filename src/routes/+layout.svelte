@@ -5,11 +5,11 @@
 <div class="navbar bg-base-300 sticky top-0">
 	<!-- Top left corner Website Title -->
 	<div class="">
-	  <a class="btn btn-ghost text-3xl">ChillPill</a>
+	  <a class="btn btn-ghost gap-2 text-3xl px-3 mx-2">ChillPill</a>
 	</div>
 
 	<!-- Dark and Light Theme Toggle -->
-	<label class="flex cursor-pointer gap-2 me-auto">
+	<label class="flex cursor-pointer gap-2 label-info me-auto">
 		<svg
 		  xmlns="http://www.w3.org/2000/svg"
 		  width="20"
@@ -42,11 +42,11 @@
 	<!-- Dropdown Menu -->
 	<div class="flex-none gap-2">
 	  <div class="flex-none gap-2">
-		<ul class="menu menu-horizontal px-1">
+		<ul class="menu menu-horizontal p-1">
 		  <li>
 			<details>
 			  <summary>Menu</summary>
-			  <ul class="bg-base-100 rounded-3xl p-2">
+			  <ul class="bg-base-100 rounded-3xl p-1">
 				<li><a>Account</a></li>
 				<li><a>Settings</a></li>
 				<li><a>Notifications</a></li>
