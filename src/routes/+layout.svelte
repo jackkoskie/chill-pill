@@ -47,8 +47,8 @@
 			<details>
 			  <summary>Menu</summary>
 			  <ul class="bg-base-100 rounded-t-none p-2">
-				<li><a>Settings</a></li>
 				<li><a>Account</a></li>
+				<li><a>Settings</a></li>
 				<li><a>Notifications</a></li>
 				<li><a>Calendar</a></li>
 			  </ul>
@@ -60,8 +60,10 @@
 		<div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
 		  <div class="w-10 rounded-full">
 			<img
+			  
 			  alt="Tailwind CSS Navbar component"
-			  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+			  src="https://tinyurl.com/yc6tw227" />
+			  <!--TinyURL.com used to shorten image address from google  -->
 		  </div>
 		</div>
 		<ul
