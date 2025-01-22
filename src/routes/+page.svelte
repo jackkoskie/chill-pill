@@ -6,7 +6,6 @@
         <li>Calendars</li>
         <li>ChillPill</li>
         <li aria-hidden="true">Medication</li>
-    </ul>
   </div>
 </div>
 
