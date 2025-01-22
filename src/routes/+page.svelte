@@ -1,5 +1,13 @@
 <div class="center-container">
-  <span class="loading loading-dots loading-lg"></span>
+  <div class="Welcome to">    
+        <li>Medication</li>
+        <li>Reminders</li>
+        <li>Personalisation</li>
+        <li>Calendars</li>
+        <li>ChillPill</li>
+        <li aria-hidden="true">Medication</li>
+    </ul>
+  </div>
 </div>
 
 <style>
