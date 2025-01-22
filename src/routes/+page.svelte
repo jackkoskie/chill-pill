@@ -1,4 +1,4 @@
-<div class="center-container">
+<div class="center-container translate-up">
   <div class="Welcome to">    
         <li>Medication</li>
         <li>Reminders</li>
@@ -15,5 +15,8 @@
     justify-content: center;
     align-items: center;
     height: 100vh; /* Full viewport height */
+  }
+  .translate-up {
+    transform:translateY(-50px)
   }
 </style>
