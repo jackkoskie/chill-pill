@@ -34,7 +34,22 @@ export default {
     },
   },
   daisyui: {
-    themes: ['winter', 'luxury'],
+    themes: [
+      {
+        mytheme: {
+          "primary": "#111827",
+          "secondary": "#0035ff",
+          "accent": "#00b66f",
+          "neutral": "#142225",
+          "base-100": "#fff3ec",
+          "info": "#00d7ff",
+          "success": "#007d00",
+          "warning": "#a38000",
+          "error": "#fe5974",
+          },
+        },
+        "luxury"
+      ],
   },
   plugins: [daisyui],
 } satisfies Config;
