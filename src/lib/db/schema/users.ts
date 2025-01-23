@@ -5,7 +5,8 @@ import { medications } from './medications';
 export const users = sqliteTable('users', {
 	id: int().primaryKey({ autoIncrement: true }).notNull(),
 	name: text().notNull(),
-	email: text().notNull()
+	email: text().notNull(),
+	googleId: text().unique()
 });
 
 export const usersRelations = relations(users, ({ one, many }) => ({

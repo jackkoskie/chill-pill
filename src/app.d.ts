@@ -13,6 +13,8 @@ declare global {
 		}
 		interface Locals {
 			db: DrizzleD1Database<typeof schema>;
+			user: schema.User | null;
+			session: schema.AuthSession | null;
 		}
 	}
 }

@@ -1,2 +1,12 @@
-<h1>Welcome to Chill Pill</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script lang="ts">
+	import type { PageData } from './$types';
+
+	let { data }: { data: PageData } = $props();
+</script>
+
+{#if data.user}
+	<p>Hello {data.user.name}</p>
+	<p><a href="/logout">Logout</a></p>
+{:else}
+	<p>Not Logged In. <a href="/login">Login</a></p>
+{/if}
