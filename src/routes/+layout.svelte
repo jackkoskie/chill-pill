@@ -82,7 +82,10 @@
 		<div class="dropdown dropdown-end">
 			<div tabindex="0" role="button" class="avatar btn btn-circle btn-ghost">
 				<div class="w-10 rounded-full">
-					<img alt="Tailwind CSS Navbar component" src="https://tinyurl.com/yc6tw227" />
+					<img
+						alt="Tailwind CSS Navbar component"
+						src="https://static.vecteezy.com/system/resources/previews/009/292/244/non_2x/default-avatar-icon-of-social-media-user-vector.jpg"
+					/>
 					<!--TinyURL.com used to shorten image address from google  -->
 				</div>
 			</div>
