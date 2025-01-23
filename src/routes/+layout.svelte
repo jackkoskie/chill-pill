@@ -44,7 +44,7 @@
 		</svg>
 		<input
 			type="checkbox"
-			value="luxury"
+			value="myTheme"
 			class="theme-controller toggle"
 			bind:checked={theme}
 			onclick={toggleTheme}
