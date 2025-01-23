@@ -21,7 +21,7 @@
 <div class="navbar sticky top-0 bg-base-300">
 	<!-- Top left corner Website Title -->
 	<div class="">
-		<a class="btn btn-ghost mx-2 gap-2 px-3 text-3xl">ChillPill</a>
+		<a href="/" class="btn btn-ghost mx-2 gap-2 px-3 text-3xl">ChillPill</a>
 	</div>
 
 	<!-- Dark and Light Theme Toggle -->
