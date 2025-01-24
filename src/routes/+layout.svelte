@@ -19,7 +19,7 @@
 </script>
 
 <div class="min-h-screen flex flex-col">
-	<div class="navbar sticky top-0 bg-base-300">
+	<div class="navbar sticky top-0 bg-base-300 z-[9999]">
 		<!-- Top left corner Website Title -->
 		<div class="">
 			<a href="/" class="btn btn-ghost mx-2 gap-2 px-3 text-3xl">ChillPill</a>
@@ -115,7 +115,7 @@
 		{@render children()}
 	</main>
 	
-	<footer class="footer bg-neutral text-neutral-content items-center p-4">
+	<footer class="footer bg-neutral text-neutral-content items-center p-4 z-[9999]">
 		<aside class="grid-flow-col items-center">
 		<svg
 			width="36"
