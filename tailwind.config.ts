@@ -4,10 +4,11 @@ import daisyui from 'daisyui';
 export default {
   darkMode: 'class',
   content: ['./src/**/*.{html,js,svelte,ts}'],
+
   theme: {
     extend: {
       animation: {
-        'text-slide': 'text-slide 12.5s cubic-bezier(0.83, 0, 0.17, 1) infinite',
+        rotateText: 'text-slide 8s infinite',
       },
       keyframes: {
         'text-slide': {
@@ -48,7 +49,7 @@ export default {
           "error": "#fe5974",
           },
         },
-        "luxury"
+        "luxury",
       ],
   },
   plugins: [daisyui],
