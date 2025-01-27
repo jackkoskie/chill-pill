@@ -44,6 +44,7 @@
 		"wrangler": "^3.99.0"
 	},
 	"dependencies": {
+		"@iconify/svelte": "^4.2.0",
 		"@oslojs/crypto": "^1.0.1",
 		"arctic": "^3.2.0",
 		"better-sqlite3": "^11.8.1",
