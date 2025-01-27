@@ -11,8 +11,11 @@
 		<div class="card w-96 bg-base-300 shadow-xl">
 			<div class="card-body">
 				<div class="card-actions justify-center">
-					<button class="btn btn-neutral"
-						><Icon icon="devicon:google" /> Continue with Google</button
+					<a href="/login/google" class="btn btn-neutral w-60"
+						><Icon icon="devicon:google" /> Continue with Google</a
+					>
+					<a href="/login/facebook" class="btn btn-neutral w-60"
+						><Icon icon="logos:facebook" /> Continue with Facebook</a
 					>
 				</div>
 			</div>
