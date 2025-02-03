@@ -14,13 +14,11 @@
 					<a href="/login/google" class="btn btn-neutral w-60"
 						><Icon icon="devicon:google" /> Continue with Google</a
 					>
-					<a href="/login/facebook" class="btn btn-neutral w-60"
+					<!-- <a href="/login/facebook" class="btn btn-neutral w-60"
 						><Icon icon="logos:facebook" /> Continue with Facebook</a
-					>
+					> -->
 				</div>
 			</div>
 		</div>
-		<!-- <h1>Sign in</h1>
-		<a href="/login/google">Sign in with Google</a> -->
 	</div>
 </section>
