@@ -84,6 +84,9 @@
 			</p>
 		</aside>
 		<nav class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+			<a class="text-xl" href="https://en.wikipedia.org/wiki/LeBron_James" target="_blank">
+				<Icon icon="ion:basketball-sharp" />
+			</a>
 			<a class="text-xl" href="https://x.com" target="_blank">
 				<Icon icon="prime:twitter" />
 			</a>
@@ -96,6 +99,7 @@
 			<a class="text-xl" href="https://github.com/jackkoskie/chill-pill" target="_blank">
 				<Icon icon="mdi:github" />
 			</a>
+
 		</nav>
 	</footer>
 </div>
