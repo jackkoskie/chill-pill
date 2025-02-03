@@ -1,2 +1,19 @@
-<h1>Welcome to Chill Pill</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<div class = "flex justify-center items-center min-h-[80vh] relative -z-10">
+	<div class="bg-base-200 p-10 rounded-xl">
+		<ul class = "text-left text-pretty text-5xl font-bold">
+			<li>Medication</li>
+			<li>Reminders</li>
+			<li>Personalisation</li>
+			<li>Calendars</li>
+			<li>ChillPill</li>
+		</ul>
+	</div>
+</div>
+
+<style>
+	ul {
+		list-style-type: none;
+		margin: 0px;
+		padding:20px;
+	}
+</style>
