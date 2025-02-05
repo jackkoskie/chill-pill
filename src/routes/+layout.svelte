@@ -66,7 +66,24 @@
 				</div>
 			</div>
 		{:else}
+			
 			<div class="flex-none gap-2">
+				<div class="dropdown dropdown-bottom">
+					<div class="btn btn-ghost" tabindex="0" role="button">
+						<span>Language</span>
+					</div>
+					<ul
+						tabindex="0"
+						class ="bg-base-400 menu dropdown-content menu-sm z-[1] mt-3 w-32 rounded-box p-2 shadow"
+					>
+						<li>
+							<a href="#" class="justify-between"> English </a>
+						</li>
+						<li><a href="#">Français</a></li>
+						<li><a href="#">中文</a></li>
+						<li><a href="#">Español</a></li>
+					</ul>
+				</div>
 				<a href="/login" class="btn btn-ghost">Login</a>
 			</div>
 		{/if}
