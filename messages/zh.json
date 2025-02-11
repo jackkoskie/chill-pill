@@ -1,4 +1,5 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"language": "Chinese (Traditional)"
+	"language": "Chinese (Traditional)",
+	"calendar": "日历"
 }
