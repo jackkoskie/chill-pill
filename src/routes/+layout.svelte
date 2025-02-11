@@ -44,53 +44,88 @@
 				<Icon icon="flowbite:moon-outline" style="font-size: 30px" />
 			</label>
 
-			<!-- Dropdown Menu -->
-			{#if data.user}
+		<!-- Dropdown Menu -->
+		{#if data.user}
+			<div class="flex-none gap-2">
 				<div class="flex-none gap-2">
-					<div class="flex-none gap-2">
-						<ul class="menu menu-horizontal p-1">
-							<li><a>Notifications</a></li>
-							<li><a>Calendar</a></li>
-						</ul>
-					</div>
-					<div class="dropdown dropdown-end">
-						<div class="btn btn-ghost" tabindex="0" role="button">
-							<span>{data.user.name}</span>
-						</div>
-						<ul
-							tabindex="0"
-							class="bg-base-400 menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box p-2 shadow"
-						>
-							<li>
-								<a class="justify-between"> Profile </a>
-							</li>
-							<li><a>Settings</a></li>
-							<li><a href="/logout">Log Out</a></li>
-						</ul>
-					</div>
+					<ul class="menu menu-horizontal p-1">
+						<li><a>Notifications</a></li>
+						<li><a>Calendar</a></li>
+					</ul>
 				</div>
-			{:else}
-				<div class="flex-none gap-2">
-					<div class="dropdown dropdown-bottom">
-						<div class="btn btn-ghost" tabindex="0" role="button">
-							<span>Language</span>
-						</div>
-						<ul
-							tabindex="0"
-							class="bg-base-400 menu dropdown-content menu-sm z-[1] mt-3 w-32 rounded-box p-2 shadow"
-						>
-							<li>
-								<a href="#" class="justify-between"> English </a>
-							</li>
-							<li><a href="#">Français</a></li>
-							<li><a href="#">中文</a></li>
-							<li><a href="#">Español</a></li>
-						</ul>
+				<div class="dropdown dropdown-end">
+					<div class="btn btn-ghost" tabindex="0" role="button">
+						<span>{data.user.name}</span>
 					</div>
-					<a href="/login" class="btn btn-ghost">Login</a>
+					<ul
+						tabindex="-2"
+						class="bg-base-400 menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box p-2 shadow"
+					>
+						<li>
+							<a class="justify-between"> Profile </a>
+						</li>
+						<li><a>Settings</a></li>
+						<li><a href="/logout">Log Out</a></li>
+					</ul>
 				</div>
-			{/if}
-		</div>
+			</div>
+		{:else}
+			
+			<div class="flex-none gap-2">
+				<div class="dropdown dropdown-bottom">
+					<div class="btn btn-ghost" tabindex="0" role="button">
+						<span>Language</span>
+					</div>
+					<ul
+						tabindex="-1"
+						class ="bg-base-400 menu dropdown-content menu-sm z-[1] mt-3 w-32 rounded-box p-2 shadow"
+					>
+						<li
+							role="menuitem"
+						>
+							<a href="/" class="justify-between"> English </a>
+						</li>
+						<li
+							role="menuitem"
+						>
+							<a href="/">Français</a>
+						</li>
+						<li
+							role="menuitem"
+							data-popover-target="nested-menu"
+						>
+							<a href="/">中文</a>
+						</li>
+						<li
+							role="menuitem"
+						>
+							<a href="/">Español</a>
+						</li>
+					</ul>
+					<ul
+						role="menu"
+						data-popover="nested-menu"
+						data-popover-offset="100"
+						data-popover-placement="bottom"
+						class ="bg-base-400 menu dropdown-content menu-sm z-[1] mt-3 w-32 rounded-box p-2 shadow"	
+					>
+						<li
+							role="menuitem"
+						>
+							<a href="/">简体中文</a>
+						</li>
+						<li
+							role="menuitem"	
+						>
+							<a href="/">繁體中文</a>
+						</li>
+
+					</ul>
+				</div>
+				<a href="/login" class="btn btn-ghost">Login</a>
+			</div>
+		{/if}
+	</div>
 
 		<main class="flex-1">
 			{@render children()}
