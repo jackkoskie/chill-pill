@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { ParaglideJS } from '@inlang/paraglide-sveltekit';
 	import { i18n } from '$lib/i18n';
+	import { page } from '$app/stores';
+	import * as m from '$lib/paraglide/messages';
 
 	import { onMount } from 'svelte';
 	import Icon from '@iconify/svelte';
@@ -27,7 +29,7 @@
 	<div class="flex min-h-screen flex-col">
 		<div class="navbar sticky top-0 z-[9999] bg-base-300">
 			<!-- Top left corner Website Title -->
-			<a href="/" class="btn btn-ghost mx-2 gap-2 px-1 text-3xl"
+			<a href={i18n.resolveRoute('/')} class="btn btn-ghost mx-2 gap-2 px-1 text-3xl"
 				><img src={logo} class="w-12" />Chill Pill</a
 			>
 
@@ -44,66 +46,63 @@
 				<Icon icon="flowbite:moon-outline" style="font-size: 30px" />
 			</label>
 
-		<!-- Dropdown Menu -->
-		{#if data.user}
-			<div class="flex-none gap-2">
+			<!-- Dropdown Menu -->
+			{#if data.user}
 				<div class="flex-none gap-2">
-					<ul class="menu menu-horizontal p-1">
-						<li><a>Notifications</a></li>
-						<li><a>Calendar</a></li>
-					</ul>
-				</div>
-				<div class="dropdown dropdown-end">
-					<div class="btn btn-ghost" tabindex="0" role="button">
-						<span>{data.user.name}</span>
+					<div class="flex-none gap-2">
+						<ul class="menu menu-horizontal p-1">
+							<li><a>{m.notifications()}</a></li>
+							<li><a>{m.calendar()}</a></li>
+						</ul>
 					</div>
-					<ul
-						tabindex="-2"
-						class="bg-base-400 menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box p-2 shadow"
-					>
-						<li>
-							<a class="justify-between"> Profile </a>
-						</li>
-						<li><a>Settings</a></li>
-						<li><a href="/logout">Log Out</a></li>
-					</ul>
-				</div>
-			</div>
-		{:else}
-			
-			<div class="flex-none gap-2">
-				<div class="dropdown dropdown-bottom">
-					<div class="btn btn-ghost" tabindex="0" role="button">
-						<span>Language</span>
-					</div>
-					<ul
-						tabindex="-1"
-						class ="bg-base-400 menu dropdown-content menu-sm z-[1] mt-3 w-32 rounded-box p-2 shadow"
-					>
-						<li>
-							<a href="/"> English </a>
-						</li>
-						<li>
-							<a href="/">Français</a>
-						</li>
-						<li
-							class="bg-base-400"
+					<div class="dropdown dropdown-end">
+						<div class="btn btn-ghost" tabindex="0" role="button">
+							<span>{data.user.name}</span>
+						</div>
+						<ul
+							tabindex="-2"
+							class="bg-base-400 menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box p-2 shadow"
 						>
-							<p class="pointer-events-none">中文</p>
-							<ul class="bg-base-400 p-2">
-								<li><a href="/">简体中文</a></li>
-								<li><a href="/">繁體中文</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="/">Español</a>
-						</li>
-					</ul>
+							<li>
+								<a class="justify-between"> {m.profile()} </a>
+							</li>
+							<li><a>{m.settings()}</a></li>
+							<li><a href={i18n.resolveRoute('/logout')}>{m.logout()}</a></li>
+						</ul>
+					</div>
 				</div>
-				<a href="/login" class="btn btn-ghost">Login</a>
+			{:else}
+				<div class="flex-none gap-2">
+					<a href={i18n.resolveRoute('/login')} class="btn btn-ghost">{m.login()}</a>
+				</div>
+			{/if}
+			<div class="dropdown dropdown-bottom">
+				<div class="btn btn-ghost" tabindex="0" role="button">
+					<span>Language</span>
+				</div>
+				<ul
+					tabindex="-1"
+					class="bg-base-400 menu dropdown-content menu-sm z-[1] mt-3 w-32 rounded-box p-2 shadow"
+				>
+					<li role="menuitem">
+						<a href={i18n.route($page.url.pathname)} class="justify-between"> English </a>
+					</li>
+					<li role="menuitem">
+						<a href={'/fr' + i18n.route($page.url.pathname)}>Français</a>
+					</li>
+					<li class="bg-base-400">
+						<p class="pointer-events-none">中文</p>
+						<ul class="bg-base-400 p-2">
+							<li><a href={'/zh-cn' + i18n.route($page.url.pathname)}>简体中文</a></li>
+							<li><a href={'/zh' + i18n.route($page.url.pathname)}>繁體中文</a></li>
+						</ul>
+					</li>
+					<li role="menuitem">
+						<a href={'/es' + i18n.route($page.url.pathname)}>Español</a>
+					</li>
+				</ul>
 			</div>
-		{/if}
-	</div>
+		</div>
 
 		<main class="flex-1">
 			{@render children()}
