@@ -80,14 +80,10 @@
 						tabindex="-1"
 						class ="bg-base-400 menu dropdown-content menu-sm z-[1] mt-3 w-32 rounded-box p-2 shadow"
 					>
-						<li
-							role="menuitem"
-						>
-							<a href="/" class="justify-between"> English </a>
+						<li>
+							<a href="/"> English </a>
 						</li>
-						<li
-							role="menuitem"
-						>
+						<li>
 							<a href="/">Français</a>
 						</li>
 						<li
@@ -99,31 +95,10 @@
 								<li><a href="/">繁體中文</a></li>
 							</ul>
 						</li>
-						<li
-							role="menuitem"
-						>
+						<li>
 							<a href="/">Español</a>
 						</li>
 					</ul>
-					<!-- <ul
-						role="menu"
-						data-popover="nested-menu"
-						data-popover-offset="30"
-						data-popover-placement="left"
-						class ="bg-base-400 menu dropdown-content menu-sm z-[1] mt-3 w-32 rounded-box p-2 shadow"	
-					>
-						<li
-							role="menuitem"
-						>
-							<a href="/">简体中文</a>
-						</li>
-						<li
-							role="menuitem"	
-						>
-							<a href="/">繁體中文</a>
-						</li>
-
-					</ul> -->
 				</div>
 				<a href="/login" class="btn btn-ghost">Login</a>
 			</div>
