@@ -1,5 +1,12 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
 	"language": "French",
-	"calendar": "Calendrier"
+	"brand_name": "ChillPill",
+	"notifications": "Notifications",
+	"calendar": "Calendrier",
+	"medication": "Médicament",
+	"personalisation": "Personnalisation",
+	"profile": "Profil",
+	"logout": "Se déconnecter",
+	"login": "Se connecter"
 }
