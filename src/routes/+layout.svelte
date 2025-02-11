@@ -89,7 +89,7 @@
 						<li
 							class="bg-base-400"
 						>
-							<p>中文</p>
+							<p class="pointer-events-none">中文</p>
 							<ul class="bg-base-400 p-2">
 								<li><a href="/">简体中文</a></li>
 								<li><a href="/">繁體中文</a></li>
