@@ -1,3 +1,9 @@
 {
-    "$schema": "https://inlang.com/schema/inlang-message-format"
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"language": "English",
+	"brand_name": "ChillPill",
+	"home_page_1": "Medication",
+	"home_page_2": "Reminders",
+	"home_page_3": "Personalisation",
+	"home_page_4": "Calendars"
 }
