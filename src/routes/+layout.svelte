@@ -64,7 +64,7 @@
 						<p class="pointer-events-none">中文</p>
 						<ul class="bg-base-400 p-2">
 							<li><a href={'/zh-cn' + i18n.route($page.url.pathname)}>简体中文</a></li>
-							<li><a href={'/zh' + i18n.route($page.url.pathname)}>繁體中文</a></li>
+							<li><a href={'/zh-Hant' + i18n.route($page.url.pathname)}>繁體中文</a></li>
 						</ul>
 					</li>
 					<li role="menuitem">
