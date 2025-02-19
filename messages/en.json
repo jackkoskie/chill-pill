@@ -1,0 +1,14 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"language": "English",
+	"brand_name": "ChillPill",
+	"menu_notifications": "Notifications",
+	"notifications": "Notifications",
+	"calendar": "Calendar",
+	"medication": "Medication",
+	"personalisation": "Personalisation",
+	"profile": "Profile",
+	"settings": "Settings",
+	"logout": "Log Out",
+	"login": "Login"
+}
