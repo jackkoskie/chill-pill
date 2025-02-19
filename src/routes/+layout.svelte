@@ -46,6 +46,32 @@
 				<Icon icon="flowbite:moon-outline" style="font-size: 30px" />
 			</label>
 
+						<div class="dropdown dropdown-bottom">
+				<div class="btn btn-ghost" tabindex="0" role="button">
+					<span>{m.language()}</span>
+				</div>
+				<ul
+					tabindex="-1"
+					class="bg-base-400 menu dropdown-content menu-sm z-[1] mt-3 w-32 rounded-box p-2 shadow"
+				>
+					<li role="menuitem">
+						<a href={i18n.route($page.url.pathname)} class="justify-between"> English </a>
+					</li>
+					<li role="menuitem">
+						<a href={'/fr' + i18n.route($page.url.pathname)}>Français</a>
+					</li>
+					<li class="bg-base-400">
+						<p class="pointer-events-none">中文</p>
+						<ul class="bg-base-400 p-2">
+							<li><a href={'/zh-cn' + i18n.route($page.url.pathname)}>简体中文</a></li>
+							<li><a href={'/zh' + i18n.route($page.url.pathname)}>繁體中文</a></li>
+						</ul>
+					</li>
+					<li role="menuitem">
+						<a href={'/es' + i18n.route($page.url.pathname)}>Español</a>
+					</li>
+				</ul>
+			</div>
 			<!-- Dropdown Menu -->
 			{#if data.user}
 				<div class="flex-none gap-2">
@@ -76,32 +102,6 @@
 					<a href={i18n.resolveRoute('/login')} class="btn btn-ghost">{m.login()}</a>
 				</div>
 			{/if}
-			<div class="dropdown dropdown-bottom">
-				<div class="btn btn-ghost" tabindex="0" role="button">
-					<span>Language</span>
-				</div>
-				<ul
-					tabindex="-1"
-					class="bg-base-400 menu dropdown-content menu-sm z-[1] mt-3 w-32 rounded-box p-2 shadow"
-				>
-					<li role="menuitem">
-						<a href={i18n.route($page.url.pathname)} class="justify-between"> English </a>
-					</li>
-					<li role="menuitem">
-						<a href={'/fr' + i18n.route($page.url.pathname)}>Français</a>
-					</li>
-					<li class="bg-base-400">
-						<p class="pointer-events-none">中文</p>
-						<ul class="bg-base-400 p-2">
-							<li><a href={'/zh-cn' + i18n.route($page.url.pathname)}>简体中文</a></li>
-							<li><a href={'/zh' + i18n.route($page.url.pathname)}>繁體中文</a></li>
-						</ul>
-					</li>
-					<li role="menuitem">
-						<a href={'/es' + i18n.route($page.url.pathname)}>Español</a>
-					</li>
-				</ul>
-			</div>
 		</div>
 
 		<main class="flex-1">
