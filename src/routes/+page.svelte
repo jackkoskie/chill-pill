@@ -15,6 +15,7 @@
 			<li>{m.calendar()}</li>
 			<li>{m.brand_name()}</li>
 			<li>{m.language()}</li>
+			<li>{m.red()}</li>
 		</ul>
 	</div>
 </div>
