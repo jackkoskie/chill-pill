@@ -1,6 +1,6 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"language": "Chinese (Simplified)",
+	"language": "简体中文",
 	"brand_name": "ChillPill",
 	"notifications": "通知",
 	"calendar": "日历",
