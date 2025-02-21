@@ -30,7 +30,7 @@
 		<div class="navbar sticky top-0 z-[9999] bg-base-300">
 			<!-- Top left corner Website Title -->
 			<a href={i18n.resolveRoute('/')} class="btn btn-ghost mx-2 gap-2 px-1 text-3xl"
-				><img src={logo} class="w-12" />Chill Pill</a
+				><img src={logo} class="w-12" alt="Chill Pill Logo" />Chill Pill</a
 			>
 
 			<!-- Dark and Light Theme Toggle -->
@@ -46,7 +46,7 @@
 				<Icon icon="flowbite:moon-outline" style="font-size: 30px" />
 			</label>
 
-						<div class="dropdown dropdown-bottom">
+			<div class="dropdown dropdown-bottom">
 				<div class="btn btn-ghost" tabindex="0" role="button">
 					<span>{m.language()}</span>
 				</div>
@@ -90,9 +90,11 @@
 							class="bg-base-400 menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box p-2 shadow"
 						>
 							<li>
-								<a class="justify-between"> {m.profile()} </a>
+								<a class="justify-between" href={i18n.resolveRoute('/dashboard')}>
+									{m.dashboard()}
+								</a>
 							</li>
-							<li><a>{m.settings()}</a></li>
+							<li><a href={i18n.resolveRoute('/settings')}>{m.settings()}</a></li>
 							<li><a href={i18n.resolveRoute('/logout')}>{m.logout()}</a></li>
 						</ul>
 					</div>
