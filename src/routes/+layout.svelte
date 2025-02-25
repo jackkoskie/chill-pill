@@ -30,7 +30,7 @@
 		<div class="navbar sticky top-0 z-[9999] bg-base-300">
 			<!-- Top left corner Website Title -->
 			<a href={i18n.resolveRoute('/')} class="btn btn-ghost mx-2 gap-2 px-1 text-3xl"
-				><img src={logo} class="w-12" />Chill Pill</a
+				><img src={logo} class="w-12" />ChillPill</a
 			>
 
 			<!-- Dark and Light Theme Toggle -->
