@@ -23,11 +23,26 @@
 	}
 </script>
 
-<div class="text-center text-5xl">
-	<h1>Welcome Back, User!</h1>
-
-	<p>
-		Today is {weekday}, {month}
-		{day}{ordinal(day)}
-	</p>
+<div class="box">
+	<h1 class=" flex items-center">
+		<p class="pl-10 font-black">
+			Welcome, User
+			<br />
+			14:15:40
+			<br />
+			{weekday},
+			<br />
+			{month}
+			{day}{ordinal(day)}
+		</p>
+	</h1>
 </div>
+
+<style>
+	.box {
+		font-size: 20px;
+		padding: 20px;
+		margin: 10px;
+		border-radius: 8px;
+	}
+</style>
