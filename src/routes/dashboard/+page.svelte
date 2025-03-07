@@ -3,6 +3,8 @@
 	import * as m from '$lib/paraglide/messages.js';
 	import { FakePrimitiveParam } from 'drizzle-orm';
 	import { intToDay } from '$lib/utils/converter';
+	import Icon from '@iconify/svelte';
+
 	let { data }: { data: PageData } = $props();
 	let date = new Date();
 	const month = date.toLocaleString('default', { month: 'long' });
@@ -23,26 +25,41 @@
 	}
 </script>
 
-<div class="box">
-	<h1 class=" flex items-center">
-		<p class="pl-10 font-black">
-			Welcome, User
-			<br />
-			14:15:40
-			<br />
-			{weekday},
-			<br />
-			{month}
-			{day}{ordinal(day)}
-		</p>
-	</h1>
+<div class="flex w-screen flex-row justify-between px-4 py-2">
+	<div>
+		<h1>Home</h1>
+	</div>
+	<label for="my-drawer" class="btn drawer-button text-2xl">
+		<Icon icon="charm:menu-hamburger" />
+	</label>
+</div>
+<div class="drawer">
+	<input id="my-drawer" type="checkbox" class="drawer-toggle" />
+	<div class="drawer-content"></div>
+	<div class="drawer-side mb-16 mt-16">
+		<label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
+		<ul class="menu h-[calc(100vh-8rem)] w-80 bg-base-200 p-4 text-base-content">
+			<div>
+				<h1 class=" flex w-fit items-center rounded-xl bg-base-200 p-6">
+					<p class="font-black">
+						14:15:40
+						<br />
+						{weekday},
+						<br />
+						{month}
+						{day}{ordinal(day)}
+					</p>
+				</h1>
+				<li><a href="/dashboard">Home</a></li>
+				<li><a>Sidebar Item 2</a></li>
+			</div>
+		</ul>
+	</div>
 </div>
 
 <style>
 	.box {
-		font-size: 20px;
-		padding: 20px;
-		margin: 10px;
-		border-radius: 8px;
+		font-size: 26px;
+		border-radius: 10px;
 	}
 </style>
