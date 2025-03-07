@@ -6,10 +6,10 @@ export const medications = sqliteTable('medications', {
 	id: int().primaryKey({ autoIncrement: true }).notNull(),
 	name: text().notNull(),
 	description: text(),
-	days: int(),
-	time: int(),
-	dose: real(),
-	units: text(),
+	days: int().notNull(),
+	time: int().notNull(),
+	dose: real().notNull(),
+	units: text().notNull(),
 	userID: int()
 		.notNull()
 		.references(() => users.id)

@@ -1,7 +1,17 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import * as m from '$lib/paraglide/messages';
-	import { users } from '$lib/db/schema';
+	import { users, type Medication } from '$lib/db/schema';
+	import Icon from '@iconify/svelte';
+
+	import {
+		dayToInt,
+		dayToString,
+		intToDay,
+		intToTime,
+		timeToInt,
+		timeToString
+	} from '$lib/utils/converter';
 
 	let { data }: { data: PageData } = $props();
 
@@ -16,11 +26,259 @@
 			return m.greeting_evening({ name });
 		}
 	};
+
+	let editName = $state('');
+	let editDays = $state(Array(7).fill(false));
+	let editTime = $state(Array(24).fill(false));
+	let editDescription = $state('');
+	let selectTime: number = $state(-1);
+	let medications = $state(data.user!.medications);
+	let editDose = $state(0);
+	let editUnits = $state('');
+	let edit = $state(true);
+
+	const initEditModal = (med: Medication) => {
+		edit = true;
+		editName = med.name;
+		editDays = intToDay(med.days);
+		editTime = intToTime(med.time);
+		editDescription = med.description || '';
+		selectTime = -1;
+		editDose = med.dose;
+		editUnits = med.units;
+	};
+
+	const saveMed = (medId: number) => {
+		const days = dayToInt(editDays);
+		const time = timeToInt(editTime);
+		const name = editName;
+		const description = editDescription;
+		const dose = editDose;
+		const units = editUnits;
+
+		data.user?.medications.find((med) => {
+			if (med.id === medId) {
+				let index = medications.findIndex((med) => med.id === medId);
+
+				medications[index] = {
+					...medications[index],
+					name,
+					days,
+					time,
+					description,
+					dose,
+					units
+				};
+
+				return true;
+			}
+			return false;
+		});
+
+		fetch('/settings', {
+			method: 'PATCH',
+			body: JSON.stringify({
+				id: medId,
+				name,
+				days,
+				time,
+				description,
+				dose,
+				units
+			}),
+			credentials: 'include'
+		});
+	};
+
+	const deleteMed = (medId: number) => {
+		data.user?.medications.find((med) => {
+			if (med.id === medId) {
+				let index = medications.findIndex((med) => med.id === medId);
+				medications.splice(index, 1);
+				return true;
+			}
+			return false;
+		});
+
+		fetch('/settings', {
+			method: 'DELETE',
+			body: JSON.stringify({
+				id: medId
+			}),
+			credentials: 'include'
+		});
+	};
 </script>
 
 <section class="">
 	<div class="container mx-auto">
-		<h1 class="pt-6 text-3xl font-semibold">{getGreeting(data.user.name.split(' ')[0])}</h1>
+		<h1 class="pt-6 text-3xl font-semibold">{getGreeting(data.user!.name.split(' ')[0])}</h1>
 		<div class="divider"></div>
+
+		<h2 class="text-xl font-medium">Medications</h2>
+		<div class="overflow-x-auto">
+			<table class="table w-[80vw]">
+				<!-- head -->
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Days to Take</th>
+						<th>Time to Take</th>
+						<th>Dose</th>
+					</tr>
+				</thead>
+				<tbody>
+					{#each medications as med}
+						<tr>
+							<td>{med.name}</td>
+							<td>{dayToString(intToDay(med.days))}</td>
+							<td>{timeToString(intToTime(med.time))}</td>
+							<td>{med.dose} {med.units}</td>
+							<td>
+								<!-- svelte-ignore a11y_click_events_have_key_events -->
+								<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+								<label for={med.id.toString()} onclick={() => initEditModal(med)}
+									><Icon icon="lucide:edit" /></label
+								>
+								<input type="checkbox" id={med.id.toString()} class="modal-toggle" />
+								<div class="modal modal-bottom sm:modal-middle" role="dialog">
+									<div class="modal-box">
+										<h3 class="text-lg font-bold">Edit {med.name}</h3>
+										<div class="mt-1 flex flex-col gap-3">
+											<label class="form-control w-full max-w-xs">
+												<div class="label">
+													<span class="label-text">Name</span>
+												</div>
+												<input
+													type="text"
+													class="input input-bordered w-full max-w-xs"
+													bind:value={editName}
+												/>
+											</label>
+											<label class="form-control w-full max-w-xs">
+												<div class="label">
+													<span class="label-text">Description</span>
+												</div>
+												<textarea
+													class="textarea textarea-bordered h-24 resize-none"
+													placeholder="Description"
+													bind:value={editDescription}
+												></textarea>
+											</label>
+											<div class="flex flex-row gap-16">
+												<div class="form-control">
+													<div class="label"><span class="label-text">Days to Take</span></div>
+													<div class="flex flex-col gap-2">
+														<label class="label cursor-pointer justify-start gap-3 py-0">
+															<input type="checkbox" bind:checked={editDays[0]} class="checkbox" />
+															<span class="label-text">Monday</span>
+														</label>
+														<label class="label cursor-pointer justify-start gap-3 py-0">
+															<input type="checkbox" bind:checked={editDays[1]} class="checkbox" />
+															<span class="label-text">Tuesday</span>
+														</label>
+														<label class="label cursor-pointer justify-start gap-3 py-0">
+															<input type="checkbox" bind:checked={editDays[2]} class="checkbox" />
+															<span class="label-text">Wednesday</span>
+														</label>
+														<label class="label cursor-pointer justify-start gap-3 py-0">
+															<input type="checkbox" bind:checked={editDays[3]} class="checkbox" />
+															<span class="label-text">Thursday</span>
+														</label>
+														<label class="label cursor-pointer justify-start gap-3 py-0">
+															<input type="checkbox" bind:checked={editDays[4]} class="checkbox" />
+															<span class="label-text">Friday</span>
+														</label>
+														<label class="label cursor-pointer justify-start gap-3 py-0">
+															<input type="checkbox" bind:checked={editDays[5]} class="checkbox" />
+															<span class="label-text">Saturday</span>
+														</label>
+														<label class="label cursor-pointer justify-start gap-3 py-0">
+															<input type="checkbox" bind:checked={editDays[6]} class="checkbox" />
+															<span class="label-text">Sunday</span>
+														</label>
+													</div>
+												</div>
+												<div class="form-control">
+													<div class="label"><span class="label-text">Time to Take</span></div>
+													<div class="flex flex-col gap-2">
+														{#each editTime as enabled, time}
+															{#if enabled}
+																<button
+																	class="my-0 px-2 py-0 text-left hover:text-error hover:line-through"
+																	onclick={() => (editTime[time] = false)}
+																	>{time.toString().padStart(2, '0')}:00</button
+																>
+															{/if}
+														{/each}
+														<select
+															class="select select-bordered w-full max-w-xs"
+															bind:value={selectTime}
+															onchange={() => {
+																if (selectTime !== -1) {
+																	editTime[selectTime] = true;
+																	selectTime = -1;
+																}
+															}}
+														>
+															<option disabled selected value={-1}>Select a Time</option>
+															{#each Array(24) as _, i}
+																{#if !editTime[i]}
+																	<option value={i}>{i.toString().padStart(2, '0')}:00</option>
+																{/if}
+															{/each}
+														</select>
+													</div>
+												</div>
+											</div>
+											<label class="form-control w-full max-w-xs">
+												<div class="label">
+													<span class="label-text">Dose</span>
+												</div>
+												<div class="flex flex-row gap-3">
+													<input
+														type="text"
+														class="input input-bordered w-24 text-right"
+														bind:value={editDose}
+													/>
+													<select
+														class="select select-bordered w-full max-w-32"
+														bind:value={editUnits}
+													>
+														<option disabled selected>Units</option>
+														<option value="mg">mg</option>
+														<option value="g">g</option>
+														<option value="mL">mL</option>
+														<option value="L">L</option>
+														<option value="pills">pills</option>
+														<option value="tablets">tablets</option>
+														<option value="drops">drops</option>
+														<option value="CC">CC</option>
+													</select>
+												</div>
+											</label>
+										</div>
+
+										<div class="modal-action">
+											<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+											<!-- svelte-ignore a11y_click_events_have_key_events -->
+											<button class="btn btn-outline btn-error" onclick={() => deleteMed(med.id)}
+												>Delete</button
+											>
+											<label
+												for={med.id.toString()}
+												class="btn btn-outline btn-success"
+												onclick={() => saveMed(med.id)}>Save</label
+											>
+										</div>
+									</div>
+								</div>
+							</td>
+						</tr>
+					{/each}
+				</tbody>
+			</table>
+			<button class="btn btn-outline btn-success mt-4"> Add Medication</button>
+		</div>
 	</div>
 </section>
