@@ -108,7 +108,7 @@
 			{@render children()}
 		</main>
 
-		<footer class="footer z-[9999] items-center bg-neutral p-4 text-neutral-content">
+		<footer class="footer z-[100] items-center bg-neutral p-4 text-neutral-content">
 			<aside class="grid-flow-col items-center">
 				<p>
 					ChillPill | Copyright © 2024 - {new Date().getFullYear()} | All right reserved | Powered by
