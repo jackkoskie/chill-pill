@@ -88,10 +88,3 @@
 <div class="flex flex-row px-4" id="dashboard">
 	<h1>Dashboard</h1>
 </div>
-
-<style>
-	.box {
-		font-size: 26px;
-		border-radius: 10px;
-	}
-</style>
