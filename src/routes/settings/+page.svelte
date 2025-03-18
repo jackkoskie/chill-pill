@@ -35,6 +35,8 @@
 	let medications = $state(data.user!.medications);
 	let editDose = $state(0);
 	let editUnits = $state('Units');
+	let editQuantity = $state(0);
+	let editWarningLevel = $state(0);
 
 	const initEditModal = (med: Medication) => {
 		editName = med.name;
@@ -44,6 +46,8 @@
 		selectTime = -1;
 		editDose = med.dose;
 		editUnits = med.units;
+		editQuantity = med.quantity;
+		editWarningLevel = med.warningLevel;
 	};
 
 	const initAddModal = () => {
@@ -53,7 +57,9 @@
 		editDescription = '';
 		selectTime = -1;
 		editDose = 0;
-		editUnits = 'Units';
+		editUnits = 'mg';
+		editQuantity = 0;
+		editWarningLevel = 0;
 	};
 
 	const saveMed = (medId: number | null = null) => {
@@ -63,6 +69,8 @@
 		const description = editDescription;
 		const dose = editDose;
 		const units = editUnits;
+		const quantity = editQuantity;
+		const warningLevel = editWarningLevel;
 
 		if (medId) {
 			data.user?.medications.find((med) => {
@@ -76,7 +84,9 @@
 						time,
 						description,
 						dose,
-						units
+						units,
+						quantity,
+						warningLevel
 					};
 
 					return true;
@@ -93,7 +103,9 @@
 					time,
 					description,
 					dose,
-					units
+					units,
+					quantity,
+					warningLevel
 				}),
 				credentials: 'include'
 			});
@@ -106,12 +118,12 @@
 					time,
 					description,
 					dose,
-					units
+					units,
+					quantity,
+					warningLevel
 				})
 			}).then(async (res) => {
 				const { med } = (await res.json()) as { med: Medication };
-
-				// console.log(medications, med);
 
 				medications = [...medications, med];
 			});
@@ -155,6 +167,8 @@
 						<th>Days to Take</th>
 						<th>Time to Take</th>
 						<th>Dose</th>
+						<th>Quantity</th>
+						<th>Refill</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -164,6 +178,8 @@
 							<td>{dayToString(intToDay(med.days))}</td>
 							<td>{timeToString(intToTime(med.time))}</td>
 							<td>{med.dose} {med.units}</td>
+							<td>{med.quantity} {med.units}</td>
+							<td>Refil at {med.warningLevel} {med.units}</td>
 							<td>
 								<!-- svelte-ignore a11y_click_events_have_key_events -->
 								<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
@@ -284,9 +300,38 @@
 														<option value="tablets">tablets</option>
 														<option value="drops">drops</option>
 														<option value="CC">CC</option>
+														<option value="mol">mol</option>
 													</select>
 												</div>
 											</label>
+											<div class="flex flex-row gap-3">
+												<label class="form-control w-full max-w-xs">
+													<div class="label">
+														<span class="label-text">Total Quantity</span>
+													</div>
+													<div class="flex flex-row items-baseline gap-3">
+														<input
+															type="text"
+															class="input input-bordered w-24 text-right"
+															bind:value={editQuantity}
+														/>
+														<span>{editUnits}</span>
+													</div>
+												</label>
+												<label class="form-control w-full max-w-xs">
+													<div class="label">
+														<span class="label-text">Refil Reminder</span>
+													</div>
+													<div class="flex flex-row items-baseline gap-3">
+														<input
+															type="text"
+															class="input input-bordered w-24 text-right"
+															bind:value={editWarningLevel}
+														/>
+														<span>{editUnits}</span>
+													</div>
+												</label>
+											</div>
 										</div>
 
 										<div class="modal-action">
@@ -431,9 +476,38 @@
 									<option value="tablets">tablets</option>
 									<option value="drops">drops</option>
 									<option value="CC">CC</option>
+									<option value="mol">mol</option>
 								</select>
 							</div>
 						</label>
+						<div class="flex flex-row gap-3">
+							<label class="form-control w-full max-w-xs">
+								<div class="label">
+									<span class="label-text">Total Quantity</span>
+								</div>
+								<div class="flex flex-row items-baseline gap-3">
+									<input
+										type="text"
+										class="input input-bordered w-24 text-right"
+										bind:value={editQuantity}
+									/>
+									<span>{editUnits}</span>
+								</div>
+							</label>
+							<label class="form-control w-full max-w-xs">
+								<div class="label">
+									<span class="label-text">Refil Reminder</span>
+								</div>
+								<div class="flex flex-row items-baseline gap-3">
+									<input
+										type="text"
+										class="input input-bordered w-24 text-right"
+										bind:value={editWarningLevel}
+									/>
+									<span>{editUnits}</span>
+								</div>
+							</label>
+						</div>
 					</div>
 
 					<div class="modal-action">

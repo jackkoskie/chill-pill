@@ -12,7 +12,9 @@ export const medications = sqliteTable('medications', {
 	units: text().notNull(),
 	userID: int()
 		.notNull()
-		.references(() => users.id)
+		.references(() => users.id),
+	quantity: real().notNull().default(0),
+	warningLevel: real('warning_level').notNull().default(0)
 });
 
 export const medicationsRelations = relations(medications, ({ one, many }) => ({

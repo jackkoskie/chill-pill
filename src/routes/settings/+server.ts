@@ -2,23 +2,27 @@ import { eq, and } from 'drizzle-orm';
 import type { RequestHandler } from './$types';
 import * as schema from '$lib/db/schema';
 
+type Medication = {
+	id?: number;
+	name: string;
+	days: number;
+	time: number;
+	description: string;
+	dose: number;
+	units: string;
+	warningLevel: number;
+	quantity: number;
+};
+
 export const PATCH: RequestHandler = async ({ request, locals }) => {
 	if (!locals.user) {
 		return new Response(null, { status: 403 });
 	}
 
-	const body = (await request.json()) as {
-		id: number;
-		name: string;
-		days: number;
-		time: number;
-		description: string;
-		dose: number;
-		units: string;
-	};
+	const body = (await request.json()) as Medication;
 
 	const medication = await locals.db.query.medications.findFirst({
-		where: and(eq(schema.medications.id, body.id), eq(schema.medications.userID, locals.user.id))
+		where: and(eq(schema.medications.id, body.id!), eq(schema.medications.userID, locals.user.id))
 	});
 
 	if (!medication) {
@@ -37,9 +41,11 @@ export const PATCH: RequestHandler = async ({ request, locals }) => {
 			time: body.time,
 			description: body.description,
 			dose: body.dose,
-			units: body.units
+			units: body.units,
+			quantity: body.quantity,
+			warningLevel: body.warningLevel
 		})
-		.where(and(eq(schema.medications.id, body.id), eq(schema.medications.userID, locals.user.id)));
+		.where(and(eq(schema.medications.id, body.id!), eq(schema.medications.userID, locals.user.id)));
 
 	return new Response();
 };
@@ -49,14 +55,7 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 		return new Response(null, { status: 403 });
 	}
 
-	const body = (await request.json()) as {
-		name: string;
-		days: number;
-		time: number;
-		description: string;
-		dose: number;
-		units: string;
-	};
+	const body = (await request.json()) as Medication;
 
 	const med = await locals.db
 		.insert(schema.medications)
@@ -67,7 +66,9 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 			time: body.time | 0,
 			description: body.description,
 			dose: body.dose | 0,
-			units: body.units
+			units: body.units,
+			quantity: body.quantity,
+			warningLevel: body.warningLevel
 		})
 		.returning();
 

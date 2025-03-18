@@ -12,7 +12,7 @@
 	"logout": "Log Out",
 	"login": "Login",
 	"dashboard": "Dashboard",
-	"greeting_afternoon": "Good Afternoon {name}!",
-	"greeting_morning": "Good Morning {name}!",
-	"greeting_evening": "Good Evening {name}!"
+	"greeting_afternoon": "Good Afternoon, {name}!",
+	"greeting_morning": "Good Morning, {name}!",
+	"greeting_evening": "Good Evening, {name}!"
 }
