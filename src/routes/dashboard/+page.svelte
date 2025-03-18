@@ -26,65 +26,81 @@
 </script>
 
 <!-- Top section -->
-<div class="flex w-full flex-row justify-between px-4 py-2" id="home">
-	<div>
-		<h1>Home</h1>
-	</div>
-</div>
-
-<div class="fixed right-4 top-20 z-[50]">
-	<label for="my-drawer" class="btn drawer-button text-2xl">
-		<Icon icon="charm:menu-hamburger" style="font-size: 30px" />
-	</label>
-</div>
-
-<div class="drawer">
-	<input id="my-drawer" type="checkbox" class="drawer-toggle" />
-	<div class="drawer-content"></div>
-	<div class="drawer-side z-[40]">
-		<label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
-		<ul class="menu min-h-screen w-80 bg-base-200 p-4 pb-20 pt-24 text-base-content">
-			<div class="text-2xl">
-				<li>
-					<h1 class="pointer-events-none bg-base-300">
-						<p>
-							{weekday},
-							{month}
-							{day}{ordinal(day)}
-						</p>
-					</h1>
-				</li>
-				<li><a href="#home">Home</a></li>
-				<li><a href="#dashboard">Dashboard</a></li>
-			</div>
-		</ul>
-	</div>
-</div>
 <div>
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<div class="card w-96 bg-base-100 shadow-xl">
-		<div class="card-body">
-			<h2 class="card-title">Shoes!</h2>
-			<p>If a dog chews shoes whose shoes does he choose?</p>
+	<div class="flex w-full flex-row justify-between px-12 py-6" id="dashboard">
+		<div>
+			<h1 class="left-4 top-20 text-4xl font-bold">Dashboard</h1>
 		</div>
-		<figure>
-			<img
-				src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-				alt="Shoes"
-			/>
-		</figure>
 	</div>
-</div>
-<div class="flex flex-row px-4" id="dashboard">
-	<h1>Dashboard</h1>
+
+	<div class="fixed right-4 top-20 z-[50] flex flex-col items-end gap-1">
+		<label for="my-drawer" class="btn drawer-button text-2xl">
+			<Icon icon="charm:menu-hamburger" style="font-size: 30px" />
+		</label>
+		<button class="text-m btn w-fit">+ Add Medication</button>
+	</div>
+
+	<div class="drawer">
+		<input id="my-drawer" type="checkbox" class="drawer-toggle" />
+		<div class="drawer-content"></div>
+		<div class="drawer-side z-[40]">
+			<label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
+			<ul class="menu min-h-screen w-80 bg-base-200 p-4 pb-20 pt-24 text-base-content">
+				<div class="text-2xl">
+					<li>
+						<h1 class="pointer-events-none bg-base-300">
+							<p>
+								{weekday},
+								{month}
+								{day}{ordinal(day)}
+							</p>
+						</h1>
+					</li>
+					<li><a href="#dashboard">Dashboard</a></li>
+					<li><a href="#calendar">Calendar</a></li>
+				</div>
+			</ul>
+		</div>
+	</div>
+	<div class="flex flex-col items-center gap-4 px-4">
+		<div class="grid w-full max-w-4xl grid-cols-2 gap-4">
+			<!-- Added grid container -->
+			<div class="stats h-32 w-full bg-neutral text-base-200">
+				<!-- Added h-32 -->
+				<div class="stat flex flex-col justify-center">
+					<!-- Added flex and centering -->
+					<div class="stat-title text-base-200">Active Medications</div>
+					<div class="stat-value">100</div>
+				</div>
+			</div>
+			<div class="stats h-32 w-full bg-neutral text-base-200">
+				<!-- Added h-32 -->
+				<div class="stat flex flex-col justify-center">
+					<!-- Added flex and centering -->
+					<div class="stat-title text-base-200">Doses Today</div>
+					<div class="stat-value">10</div>
+				</div>
+			</div>
+			<div class="stats h-32 w-full bg-neutral text-base-200">
+				<!-- Added h-32 -->
+				<div class="stat flex flex-col justify-center">
+					<!-- Added flex and centering -->
+					<div class="stat-title text-base-200">Upcoming Refills</div>
+					<div class="stat-value">2</div>
+				</div>
+			</div>
+			<div class="stats h-32 w-full bg-neutral text-base-200">
+				<!-- Added h-32 -->
+				<div class="stat flex flex-col justify-center">
+					<!-- Added flex and centering -->
+					<div class="stat-title text-base-200">Prescription Renewals</div>
+					<div class="stat-value">1</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="flex flex-row px-12" id="calendar">
+		<h1 class="text-4xl font-bold">Calendar</h1>
+	</div>
 </div>
