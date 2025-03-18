@@ -29,7 +29,7 @@
 	<div class="flex min-h-screen flex-col">
 		<div class="navbar sticky top-0 z-[9999] bg-base-300">
 			<!-- Top left corner Website Title -->
-			<a href={i18n.resolveRoute('/')} class="btn btn-ghost mx-2 gap-2 px-1 text-3xl"
+			<a href={i18n.resolveRoute('/dashboard')} class="btn btn-ghost mx-2 gap-2 px-1 text-3xl"
 				><img src={logo} class="w-12" />ChillPill</a
 			>
 
@@ -46,7 +46,7 @@
 				<Icon icon="flowbite:moon-outline" style="font-size: 30px" />
 			</label>
 
-						<div class="dropdown dropdown-bottom">
+			<div class="dropdown dropdown-bottom">
 				<div class="btn btn-ghost" tabindex="0" role="button">
 					<span>{m.language()}</span>
 				</div>
@@ -108,7 +108,7 @@
 			{@render children()}
 		</main>
 
-		<footer class="footer z-[9999] items-center bg-neutral p-4 text-neutral-content">
+		<footer class="footer z-[100] items-center bg-neutral p-4 text-neutral-content">
 			<aside class="grid-flow-col items-center">
 				<p>
 					ChillPill | Copyright © 2024 - {new Date().getFullYear()} | All right reserved | Powered by
