@@ -155,7 +155,10 @@
 <section class="">
 	<div class="container mx-auto">
 		<h1 class="pt-6 text-3xl font-semibold">{getGreeting(data.user!.name.split(' ')[0])}</h1>
-		<div class="divider"></div>
+		<p class="my-1 text-sm text-gray-500">
+			{m.settings_description()}
+		</p>
+		<div class="divider mt-0"></div>
 
 		<h2 class="text-xl font-medium">{m.medications()}</h2>
 		<div class="overflow-x-auto">
