@@ -344,14 +344,14 @@
 											<label
 												for={med.id.toString()}
 												class="btn btn-outline btn-error"
-												onclick={() => deleteMed(med.id)}>{m.delete()}</label
+												onclick={() => deleteMed(med.id)}>{m.delete_med()}</label
 											>
 											<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 											<!-- svelte-ignore a11y_click_events_have_key_events -->
 											<label
 												for={med.id.toString()}
 												class="btn btn-outline btn-success"
-												onclick={() => saveMed(med.id)}>{m.save()}</label
+												onclick={() => saveMed(med.id)}>{m.save_med()}</label
 											>
 										</div>
 									</div>

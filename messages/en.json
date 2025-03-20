@@ -24,6 +24,6 @@
 	"refil": "Refill",
 	"edit_medication": "Edit {med.name}",
 	"description": "Description",
-	"delete": "Delete",
-	"save": "Save"
+	"delete_med": "Delete",
+	"save_med": "Save"
 }
