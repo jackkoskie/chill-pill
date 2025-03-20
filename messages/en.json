@@ -27,7 +27,7 @@
 	"time_to_take": "Time to Take",
 	"dose": "Dose",
 	"quantity": "Quantity",
-	"refil": "Refill",
+	"refill_at": "Refill At",
 	"edit_medication": "Edit {med.name}",
 	"description": "Description",
 	"delete_med": "Delete",

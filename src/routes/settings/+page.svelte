@@ -168,7 +168,7 @@
 						<th>{m.time_to_take()}</th>
 						<th>{m.dose()}</th>
 						<th>{m.quantity()}</th>
-						<th>{m.refill()}</th>
+						<th>{m.refill_at()}</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -324,7 +324,7 @@
 												</label>
 												<label class="form-control w-full max-w-xs">
 													<div class="label">
-														<span class="label-text">{m.refill()}</span>
+														<span class="label-text">{m.refill_at()}</span>
 													</div>
 													<div class="flex flex-row items-baseline gap-3">
 														<input
@@ -500,7 +500,7 @@
 							</label>
 							<label class="form-control w-full max-w-xs">
 								<div class="label">
-									<span class="label-text">Refil Reminder</span>
+									<span class="label-text">{m.refill_at()}</span>
 								</div>
 								<div class="flex flex-row items-baseline gap-3">
 									<input
