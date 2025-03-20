@@ -16,5 +16,20 @@
 	"our_mission": "Our Mission",
 	"about_us_2": "We are committed to leveraging technology to enhance medication adherence, reduce missed\r\n\t\t\tdoses, and support better health outcomes. By combining an easy-to-use interface with powerful\r\n\t\t\tfeatures, we aim to bridge the gap between healthcare providers and patients.",
 	"who_we_are": "Who We Are",
-	"about_us_3": "We are a team of passionate developers and designers dedicated to making healthcare more\r\n\t\t\taccessible and manageable through technology. With a strong focus on user experience,\r\n\t\t\tsecurity, and innovation, we strive to create software that makes a real difference in\r\n\t\t\tpeople’s lives."
+	"about_us_3": "We are a team of passionate developers and designers dedicated to making healthcare more\r\n\t\t\taccessible and manageable through technology. With a strong focus on user experience,\r\n\t\t\tsecurity, and innovation, we strive to create software that makes a real difference in\r\n\t\t\tpeople’s lives.",
+	"dashboard": "Dashboard",
+	"greeting_afternoon": "Good Afternoon, {name}!",
+	"greeting_morning": "Good Morning, {name}!",
+	"greeting_evening": "Good Evening, {name}!",
+	"medications": "Medications",
+	"name": "Name",
+	"days_to_take": "Days to Take",
+	"time_to_take": "Time to Take",
+	"dose": "Dose",
+	"quantity": "Quantity",
+	"refil": "Refill",
+	"edit_medication": "Edit {med.name}",
+	"description": "Description",
+	"delete_med": "Delete",
+	"save_med": "Save"
 }
