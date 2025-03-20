@@ -14,7 +14,6 @@
 			<li>{m.personalisation()}</li>
 			<li>{m.calendar()}</li>
 			<li>{m.brand_name()}</li>
-			<li>{m.language()}</li>
 		</ul>
 	</div>
 </div>
