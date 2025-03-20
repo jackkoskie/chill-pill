@@ -157,18 +157,18 @@
 		<h1 class="pt-6 text-3xl font-semibold">{getGreeting(data.user!.name.split(' ')[0])}</h1>
 		<div class="divider"></div>
 
-		<h2 class="text-xl font-medium">Medications</h2>
+		<h2 class="text-xl font-medium">{m.medications()}</h2>
 		<div class="overflow-x-auto">
 			<table class="table w-[80vw]">
 				<!-- head -->
 				<thead>
 					<tr>
-						<th>Name</th>
-						<th>Days to Take</th>
-						<th>Time to Take</th>
-						<th>Dose</th>
-						<th>Quantity</th>
-						<th>Refill</th>
+						<th>{m.name()}</th>
+						<th>{m.days_to_take()}</th>
+						<th>{m.time_to_take()}</th>
+						<th>{m.dose()}</th>
+						<th>{m.quantity()}</th>
+						<th>{m.refill()}</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -179,7 +179,7 @@
 							<td>{timeToString(intToTime(med.time))}</td>
 							<td>{med.dose} {med.units}</td>
 							<td>{med.quantity} {med.units}</td>
-							<td>Refil at {med.warningLevel} {med.units}</td>
+							<td>{m.refill_at({ quantity: `${med.warningLevel} ${med.units}` })}</td>
 							<td>
 								<!-- svelte-ignore a11y_click_events_have_key_events -->
 								<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
@@ -189,11 +189,11 @@
 								<input type="checkbox" id={med.id.toString()} class="modal-toggle" />
 								<div class="modal modal-middle" role="dialog">
 									<div class="modal-box">
-										<h3 class="text-lg font-bold">Edit {med.name}</h3>
+										<h3 class="text-lg font-bold">{m.edit_medication({ medication: med.name })}</h3>
 										<div class="mt-1 flex flex-col gap-3">
 											<label class="form-control w-full max-w-xs">
 												<div class="label">
-													<span class="label-text">Name</span>
+													<span class="label-text">{m.name()}</span>
 												</div>
 												<input
 													type="text"
@@ -203,17 +203,19 @@
 											</label>
 											<label class="form-control w-full max-w-xs">
 												<div class="label">
-													<span class="label-text">Description</span>
+													<span class="label-text">{m.description()}</span>
 												</div>
 												<textarea
 													class="textarea textarea-bordered h-24 resize-none"
-													placeholder="Description"
+													placeholder={m.description()}
 													bind:value={editDescription}
 												></textarea>
 											</label>
 											<div class="flex flex-row gap-16">
 												<div class="form-control">
-													<div class="label"><span class="label-text">Days to Take</span></div>
+													<div class="label">
+														<span class="label-text">{m.days_to_take()}</span>
+													</div>
 													<div class="flex flex-col gap-2">
 														<label class="label cursor-pointer justify-start gap-3 py-0">
 															<input type="checkbox" bind:checked={editDays[0]} class="checkbox" />
@@ -246,7 +248,9 @@
 													</div>
 												</div>
 												<div class="form-control">
-													<div class="label"><span class="label-text">Time to Take</span></div>
+													<div class="label">
+														<span class="label-text">{m.time_to_take()}</span>
+													</div>
 													<div class="flex flex-col gap-2">
 														{#each editTime as enabled, time}
 															{#if enabled}
@@ -307,7 +311,7 @@
 											<div class="flex flex-row gap-3">
 												<label class="form-control w-full max-w-xs">
 													<div class="label">
-														<span class="label-text">Total Quantity</span>
+														<span class="label-text">{m.quantity()}</span>
 													</div>
 													<div class="flex flex-row items-baseline gap-3">
 														<input
@@ -320,7 +324,7 @@
 												</label>
 												<label class="form-control w-full max-w-xs">
 													<div class="label">
-														<span class="label-text">Refil Reminder</span>
+														<span class="label-text">{m.refill()}</span>
 													</div>
 													<div class="flex flex-row items-baseline gap-3">
 														<input
@@ -340,14 +344,14 @@
 											<label
 												for={med.id.toString()}
 												class="btn btn-outline btn-error"
-												onclick={() => deleteMed(med.id)}>Delete</label
+												onclick={() => deleteMed(med.id)}>{m.delete()}</label
 											>
 											<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 											<!-- svelte-ignore a11y_click_events_have_key_events -->
 											<label
 												for={med.id.toString()}
 												class="btn btn-outline btn-success"
-												onclick={() => saveMed(med.id)}>Save</label
+												onclick={() => saveMed(med.id)}>{m.save()}</label
 											>
 										</div>
 									</div>

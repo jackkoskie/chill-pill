@@ -14,5 +14,16 @@
 	"dashboard": "Dashboard",
 	"greeting_afternoon": "Good Afternoon, {name}!",
 	"greeting_morning": "Good Morning, {name}!",
-	"greeting_evening": "Good Evening, {name}!"
+	"greeting_evening": "Good Evening, {name}!",
+	"medications": "Medications",
+	"name": "Name",
+	"days_to_take": "Days to Take",
+	"time_to_take": "Time to Take",
+	"dose": "Dose",
+	"quantity": "Quantity",
+	"refil": "Refill",
+	"edit_medication": "Edit {med.name}",
+	"description": "Description",
+	"delete": "Delete",
+	"save": "Save"
 }
