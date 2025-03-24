@@ -1,8 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import * as m from '$lib/paraglide/messages.js';
-	import { FakePrimitiveParam } from 'drizzle-orm';
-	import { intToDay } from '$lib/utils/converter';
 	import Icon from '@iconify/svelte';
 
 	let { data }: { data: PageData } = $props();
@@ -10,7 +8,7 @@
 	const month = date.toLocaleString('default', { month: 'long' });
 	const weekday = date.toLocaleString('default', { weekday: 'long' });
 	const day = date.toLocaleString('defauly', { day: 'numeric' });
-	function ordinal(date) {
+	function ordinal(date: number) {
 		if (date > 20 || date < 10) {
 			switch (date % 10) {
 				case 1:
