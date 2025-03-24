@@ -52,7 +52,7 @@
 				</div>
 				<ul
 					tabindex="-1"
-					class="bg-base-400 menu dropdown-content menu-sm z-[1] mt-3 w-32 rounded-box p-2 shadow"
+					class="menu dropdown-content menu-sm z-[1] mt-3 w-32 rounded-box bg-base-300 p-2 shadow"
 				>
 					<li role="menuitem">
 						<a href={i18n.route($page.url.pathname)} class="justify-between"> English </a>

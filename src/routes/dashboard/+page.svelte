@@ -37,7 +37,7 @@
 		<label for="my-drawer" class="btn drawer-button text-2xl">
 			<Icon icon="charm:menu-hamburger" style="font-size: 30px" />
 		</label>
-		<button class="text-m btn w-fit">+ Add Medication</button>
+		<a href="/settings" class="text-m btn w-fit">+ Add Medication</a>
 	</div>
 
 	<div class="drawer">
@@ -57,7 +57,7 @@
 						</h1>
 					</li>
 					<li><a href="#dashboard">Dashboard</a></li>
-					<li><a href="#calendar">Calendar</a></li>
+					<li><a href="#today">Today's Medication</a></li>
 				</div>
 			</ul>
 		</div>
@@ -65,42 +65,81 @@
 	<div class="flex flex-col items-center gap-4 px-4">
 		<div class="grid w-full max-w-4xl grid-cols-2 gap-4">
 			<!-- Added grid container -->
-			<div class="stats h-32 w-full bg-neutral text-base-200">
+			<div class="stats h-32 w-full bg-neutral text-neutral-content">
 				<!-- Added h-32 -->
 				<div class="stat flex flex-col justify-center">
 					<!-- Added flex and centering -->
-					<div class="stat-title text-base-200">Active Medications</div>
+					<div class="stat-title text-neutral-content">Active Medications</div>
 					<div class="stat-value">100</div>
 				</div>
 			</div>
-			<div class="stats h-32 w-full bg-neutral text-base-200">
+			<div class="stats h-32 w-full bg-neutral text-neutral-content">
 				<!-- Added h-32 -->
 				<div class="stat flex flex-col justify-center">
 					<!-- Added flex and centering -->
-					<div class="stat-title text-base-200">Doses Today</div>
+					<div class="stat-title text-neutral-content">Doses Today</div>
 					<div class="stat-value">10</div>
 				</div>
 			</div>
-			<div class="stats h-32 w-full bg-neutral text-base-200">
+			<div class="stats h-32 w-full bg-neutral text-neutral-content">
 				<!-- Added h-32 -->
 				<div class="stat flex flex-col justify-center">
 					<!-- Added flex and centering -->
-					<div class="stat-title text-base-200">Upcoming Refills</div>
+					<div class="stat-title text-neutral-content">Upcoming Refills</div>
 					<div class="stat-value">2</div>
 				</div>
 			</div>
-			<div class="stats h-32 w-full bg-neutral text-base-200">
+			<div class="stats h-32 w-full bg-neutral text-neutral-content">
 				<!-- Added h-32 -->
 				<div class="stat flex flex-col justify-center">
 					<!-- Added flex and centering -->
-					<div class="stat-title text-base-200">Prescription Renewals</div>
+					<div class="stat-title text-neutral-content">Prescription Renewals</div>
 					<div class="stat-value">1</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<div class="flex flex-row px-12" id="calendar">
-		<h1 class="text-4xl font-bold">Calendar</h1>
+	<div class="flex flex-row px-12 py-4" id="today">
+		<h1 class="text-4xl font-bold">Today's Medication</h1>
+	</div>
+
+	<div
+		class="mx-auto max-w-4xl justify-center overflow-x-auto rounded-box border border-base-content/5 bg-base-100"
+	>
+		<table class="table">
+			<!-- head -->
+			<thead>
+				<tr>
+					<th></th>
+					<th>Medication</th>
+					<th>Quantity</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- row 1 -->
+				<tr class="h-28 hover:bg-base-300">
+					<th>1</th>
+					<td>Advil</td>
+					<td>2 tablets</td>
+					<td>Taken</td>
+				</tr>
+				<!-- row 2 -->
+				<tr class="h-28 hover:bg-base-300">
+					<th>2</th>
+					<td>Tylenol</td>
+					<td>1 pill</td>
+					<td>Not Taken</td>
+				</tr>
+				<!-- row 3 -->
+				<tr class=" h-28 hover:bg-base-300">
+					<th>3</th>
+					<td>Dushyant</td>
+					<td>180 lbs</td>
+					<td>Yummy</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 </div>
