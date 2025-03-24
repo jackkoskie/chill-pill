@@ -192,7 +192,7 @@
 								<input type="checkbox" id={med.id.toString()} class="modal-toggle" />
 								<div class="modal modal-middle" role="dialog">
 									<div class="modal-box">
-										<h3 class="text-lg font-bold">{m.edit_medication({ medication: med.name })}</h3>
+										<h3 class="text-lg font-bold">{m.edit_medication({ 'med.name': med.name })}</h3>
 										<div class="mt-1 flex flex-col gap-3">
 											<label class="form-control w-full max-w-xs">
 												<div class="label">
