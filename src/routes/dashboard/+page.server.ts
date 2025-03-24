@@ -1,8 +1,7 @@
-import { eq, gt } from 'drizzle-orm';
+import { eq } from 'drizzle-orm';
 import type { PageServerLoad } from './$types';
-import { medications, users } from '$lib/db/schema';
+import { users } from '$lib/db/schema';
 import { redirect } from '@sveltejs/kit';
-import { intToDay, intToTime } from '$lib/utils/converter';
 
 export const load = (async ({ locals }) => {
 	const { db } = locals;

@@ -29,8 +29,8 @@
 	<div class="flex min-h-screen flex-col">
 		<div class="navbar sticky top-0 z-[9999] bg-base-300">
 			<!-- Top left corner Website Title -->
-			<a href={i18n.resolveRoute('/')} class="btn btn-ghost mx-2 gap-2 px-1 text-3xl"
-				><img src={logo} class="w-12" alt="Chill Pill Logo" />Chill Pill</a
+			<a href={i18n.resolveRoute('/dashboard')} class="btn btn-ghost mx-2 gap-2 px-1 text-3xl"
+				><img src={logo} class="w-12" />ChillPill</a
 			>
 
 			<!-- Dark and Light Theme Toggle -->
@@ -52,7 +52,7 @@
 				</div>
 				<ul
 					tabindex="-1"
-					class="bg-base-400 menu dropdown-content menu-sm z-[1] mt-3 w-32 rounded-box p-2 shadow"
+					class="menu dropdown-content menu-sm z-[1] mt-3 w-32 rounded-box bg-base-300 p-2 shadow"
 				>
 					<li role="menuitem">
 						<a href={i18n.route($page.url.pathname)} class="justify-between"> English </a>
@@ -110,7 +110,7 @@
 			{@render children()}
 		</main>
 
-		<footer class="footer z-[9999] items-center bg-neutral p-4 text-neutral-content">
+		<footer class="footer z-[100] items-center bg-neutral p-4 text-neutral-content">
 			<aside class="grid-flow-col items-center">
 				<p>
 					ChillPill | Copyright © 2024 - {new Date().getFullYear()} | All right reserved | Powered by
