@@ -1,8 +1,8 @@
-< lang="ts">
+<script lang="ts">
 	import type { Medication, MedicationHistory } from '$lib/db/schema';
 	import { intToDay, intToTime } from '$lib/utils/converter';
 	import type { PageData } from './$types';
-		import * as m from '$lib/paraglide/messages.js';
+	import * as m from '$lib/paraglide/messages.js';
 	import Icon from '@iconify/svelte';
 
 	let { data }: { data: PageData } = $props();
@@ -24,7 +24,7 @@
 			}
 		}
 		return 'th';
-	}
+	};
 
 	let medications = data.medications.filter(
 		// Filter out medications that are not being taken today
@@ -282,16 +282,16 @@
 			{/each}
 		</div>
 	{/if}
-	</div>
+</div>
 
 <div class="mt-3">
-		<div class="flex flex-row gap-3">
-			<p class="text-lg font-semibold">Medications To Refill</p>
-			<a href="/settings" class="btn btn-sm">Refil at Dashboard</a>
-		</div>
-		<div class="flex flex-col gap-3">
-			{#each data.medications.filter((m) => m.quantity <= m.warningLevel) as med}
-				<p>{med.name} is at {med.quantity} {med.units}</p>
-			{/each}
-		</div>
+	<div class="flex flex-row gap-3">
+		<p class="text-lg font-semibold">Medications To Refill</p>
+		<a href="/settings" class="btn btn-sm">Refil at Dashboard</a>
 	</div>
+	<div class="flex flex-col gap-3">
+		{#each data.medications.filter((m) => m.quantity <= m.warningLevel) as med}
+			<p>{med.name} is at {med.quantity} {med.units}</p>
+		{/each}
+	</div>
+</div>
