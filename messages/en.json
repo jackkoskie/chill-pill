@@ -31,5 +31,6 @@
 	"edit_medication": "Edit {med.name}",
 	"description": "Description",
 	"delete_med": "Delete",
-	"save_med": "Save"
+	"save_med": "Save",
+	"settings_description": "Use this page to configure all the medications that you take."
 }
