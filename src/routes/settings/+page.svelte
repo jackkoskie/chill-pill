@@ -182,7 +182,7 @@
 							<td>{timeToString(intToTime(med.time))}</td>
 							<td>{med.dose} {med.units}</td>
 							<td>{med.quantity} {med.units}</td>
-							<td>{m.refill_at({ quantity: `${med.warningLevel} ${med.units}` })}</td>
+							<td>{med.warningLevel} {med.units}</td>
 							<td>
 								<!-- svelte-ignore a11y_click_events_have_key_events -->
 								<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
