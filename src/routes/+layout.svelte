@@ -78,7 +78,7 @@
 					<div class="flex-none gap-2">
 						<ul class="menu menu-horizontal p-1">
 							<li><a>{m.notifications()}</a></li>
-							<li><a>{m.calendar()}</a></li>
+							<li><a href="/calendar">{m.calendar()}</a></li>
 						</ul>
 					</div>
 					<div class="dropdown dropdown-end">
