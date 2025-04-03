@@ -89,7 +89,7 @@
 			>
 
 			<!-- Dark and Light Theme Toggle -->
-			<label class="label-info lg:me-auto flex cursor-pointer gap-2">
+			<label class="label-info flex cursor-pointer gap-2 lg:me-auto">
 				<Icon icon="flowbite:sun-outline" style="font-size: 30px" />
 				<input
 					type="checkbox"
@@ -119,18 +119,18 @@
 					</svg>
 				</div>
 				<ul
-					tabindex="0"
+					tabindex="-2"
 					class="menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box bg-base-100 p-2 shadow"
 				>
 					<li><a>Item 1</a></li>
 					<li>
 						<a>Parent</a>
 						<ul class="p-2">
-							<li><a>Submenu 1</a></li>
-							<li><a>Submenu 2</a></li>
+							<li><a href="javascript;:">Submenu 1</a></li>
+							<li><a href="javascript;:">Submenu 2</a></li>
 						</ul>
 					</li>
-					<li><a>Item 3</a></li>
+					<li><a href="javascript;:">Item 3</a></li>
 				</ul>
 			</div>
 
