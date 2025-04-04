@@ -55,9 +55,3 @@ a<!-- Main Container -->
 		{/each}
 	</div>
 </div>
-
-<style>
-	@import 'tailwindcss/base';
-	@import 'tailwindcss/components';
-	@import 'tailwindcss/utilities';
-</style>
