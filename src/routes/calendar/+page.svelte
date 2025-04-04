@@ -1,15 +1,67 @@
 <script>
+	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
 	let { data }: { data: PageData } = $props();
+
+	export let medications = [];
+	let daysInMonth = 31;
+	let calendar = Array.from({ length: daysInMonth }, () => []);
+
+	onMount(() => {
+		medications.forEach((med) => {
+			let day = parseInt(med.date.split('-')[2], 10) - 1;
+			if (day >= 0 && day < daysInMonth) {
+				calendar[day].push(med);
+			}
+		});
+	});
 </script>
 
-<!-- Main Container -->
-<div class="flex flex-col gap-4 p-4 lg:flex-row">
-	<!-- Calendar Section -->
+<div class="calendar-container">
+<div class="calendar-container">
+	<div class="grid grid-cols-7 gap-2 text-center font-semibold">
+		{#each ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] as day}
+			<div class="p-2 bg-gray-200 rounded">{day}</div>
+		{/each}
+	</div>
+
+	<div class="grid grid-cols-7 gap-2 mt-2">
+		{#each calendar as meds, i}
+			<div class="h-[100px] rounded border p-2 bg-gray-100">
+				<div class="text-sm font-semibold">{i + 1}</div>
+				{#each meds as med}
+					<div class="mt-1 p-1 rounded text-xs"
+						class:bg-green-500={med.taken}
+						class:bg-pink-500={!med.taken}>
+						{med.name} @ {intToTime(med.time).join(", ")}
+					</div>
+				{/each}
+			</div>
+		{/each}
+	</div>
+</div>
+
+<style>
+	.calendar-container {
+		max-width: 700px;
+		margin: auto;
+	}
+
+	.grid-cols-7 {
+		display: grid;
+		grid-template-columns: repeat(7, 1fr);
+	}
+</style>
+
+
+
+
+
+
+<!-- <div class="flex flex-col gap-4 p-4 lg:flex-row">
 	<div class="flex-1">
 		<h2 class="mb-4 text-xl font-bold">Medication Schedule</h2>
 
-		<!-- Calendar Days -->
 		<div class="grid grid-cols-7 gap-2">
 			{#each ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] as day}
 				<div class="text-center font-semibold">{day}</div>
@@ -32,7 +84,6 @@
 		</div>
 	</div>
 
-	<!-- Today's Medications Section -->
 	<div class="w-full rounded border bg-white p-4 shadow-md lg:w-1/3">
 		<h3 class="text-lg font-bold">Today's Medications</h3>
 
@@ -48,4 +99,4 @@
 			</div>
 		{/each}
 	</div>
-</div>
+</div> -->
