@@ -1,15 +1,9 @@
 <script>
-	// Example data for display
-	const today = new Date().toISOString().split('T')[0];
-	const medications = [
-		{ date: '2025-03-07', name: 'Aspirin', time: '8:00 AM', dosage: '100mg', taken: true },
-		{ date: '2025-03-07', name: 'Vitamin D', time: '9:00 AM', dosage: '1000 IU', taken: false },
-		{ date: '2025-03-07', name: 'Lisinopril', time: '10:00 PM', dosage: '10mg', taken: false },
-		{ date: '2025-03-08', name: 'Metformin', time: '8:00 AM', dosage: '500mg', taken: false }
-	];
+	import type { PageData } from './$types';
+	let { data }: { data: PageData } = $props();
 </script>
 
-a<!-- Main Container -->
+<!-- Main Container -->
 <div class="flex flex-col gap-4 p-4 lg:flex-row">
 	<!-- Calendar Section -->
 	<div class="flex-1">
