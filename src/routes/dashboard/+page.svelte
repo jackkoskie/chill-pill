@@ -226,7 +226,7 @@
 	</div>
 
 	{#if medicationsToTake.length === 0}
-		<p class="text-center">You're all caught up on your medications!</p>
+		<p class="py-32 text-center text-3xl">You're all caught up on your medications!</p>
 	{:else}
 		<div
 			class="mx-auto max-w-4xl justify-center overflow-x-auto rounded-box border border-base-content/5 bg-base-100"
@@ -266,28 +266,6 @@
 	<div class="flex flex-row px-12 py-4" id="actions">
 		<h1 class="text-4xl font-bold">Actions</h1>
 	</div>
-</div>
-
-<div class="mt-6">
-	<!-- if there are no medications to take right now -->
-	{#if medicationsToTake.length === 0}
-		<p>You're all caught up on your medications!</p>
-	{:else}
-		<!-- if there are medications to take -->
-		<div class="flex flex-col gap-3">
-			{#each medicationsToTake as med}
-				<div class="flex flex-row gap-3">
-					<p>You need to take {med.dose} {med.units} of {med.name} at {med.timeToTake}:00</p>
-					{#if med.quantity > 0}
-						<button class="btn" onclick={() => takeMed(med)}>Take Med</button>
-					{:else}
-						<button class="btn" disabled>Out of Medication</button>
-					{/if}
-					<button class="btn" onclick={() => skipMed(med)}>Skip</button>
-				</div>
-			{/each}
-		</div>
-	{/if}
 </div>
 
 <div class="mt-3">
