@@ -102,7 +102,9 @@
 	<!-- Medication Details Section (Right Panel) -->
 	<div class="flex-1 rounded-md bg-white p-4 text-[#151e46] shadow-lg">
 		<h3 class="mb-3 text-lg font-bold">
-			Todays Medications {selectedDate ? `- ${monthNames[month]} ${$selectedDate}` : ''}
+			{selectedDate === new Date().getDate() ? 'Todays Medications ' : ''}{selectedDate
+				? `- ${monthNames[month]} ${$selectedDate}`
+				: ''}
 		</h3>
 
 		{#if $medicationsForSelectedDate.length > 0}
