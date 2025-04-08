@@ -291,8 +291,10 @@
 						{#each data.medications.filter((med) => med.quantity <= med.warningLevel) as med}
 							<p>{med.name} has {med.quantity} {med.units} left! Please remember to refill it!</p>
 						{/each}
+						
 					</div>
 					<div class="modal-action">
+						<a href="/settings" class="btn me-auto">Refill Medications</a>
 						<label for="modal_1" class="btn">Close</label>
 					</div>
 				</div>
