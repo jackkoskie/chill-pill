@@ -1,102 +1,130 @@
-<script>
-	import { onMount } from 'svelte';
+<script lang="ts">
 	import type { PageData } from './$types';
+	import { onMount } from 'svelte';
+	import { writable, derived } from 'svelte/store';
+	import { intToDay, intToTime } from '$lib/utils/converter';
+
 	let { data }: { data: PageData } = $props();
 
-	export let medications = [];
-	let daysInMonth = 31;
-	let calendar = Array.from({ length: daysInMonth }, () => []);
+	let selectedDate: Writable<number | null> = writable(null); // Store for selectedDate
 
-	onMount(() => {
-		medications.forEach((med) => {
-			let day = parseInt(med.date.split('-')[2], 10) - 1;
-			if (day >= 0 && day < daysInMonth) {
-				calendar[day].push(med);
-			}
+	const year = 2025;
+	const month = 3; // April (0-indexed)
+
+	const getDaysInMonth = (year: number, month: number) => new Date(year, month + 1, 0).getDate();
+
+	const getFirstDayOffset = (year: number, month: number) => {
+		const jsDay = new Date(year, month, 1).getDay();
+		return (jsDay + 6) % 7;
+	};
+
+	const getDayOfWeek = (day: number) => {
+		const jsDay = new Date(year, month, day).getDay();
+		return (jsDay + 6) % 7;
+	};
+
+	// Derived store to get medications for the selected date
+	const medicationsForSelectedDate = derived(selectedDate, ($selectedDate) => {
+		if ($selectedDate === null) {
+			return [];
+		}
+		const weekday = getDayOfWeek($selectedDate);
+		return data.user.medications.filter((med) => {
+			const daysArray = intToDay(med.days);
+			return daysArray[weekday]; // Check if medication is scheduled for the selected day
 		});
 	});
+
+	// Handle date selection and update the selectedDate store
+	const selectDate = (day: number) => {
+		selectedDate.set(day);
+	};
+
+	onMount(() => {
+		// Select today's date if it's within the current month
+		const today = new Date();
+		if (today.getMonth() === month && today.getFullYear() === year) {
+			selectDate(today.getDate());
+		}
+	});
+
+	const monthNames = [
+		'January',
+		'February',
+		'March',
+		'April',
+		'May',
+		'June',
+		'July',
+		'August',
+		'September',
+		'October',
+		'November',
+		'December'
+	];
 </script>
 
-<div class="calendar-container">
-<div class="calendar-container">
-	<div class="grid grid-cols-7 gap-2 text-center font-semibold">
-		{#each ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] as day}
-			<div class="p-2 bg-gray-200 rounded">{day}</div>
-		{/each}
-	</div>
-
-	<div class="grid grid-cols-7 gap-2 mt-2">
-		{#each calendar as meds, i}
-			<div class="h-[100px] rounded border p-2 bg-gray-100">
-				<div class="text-sm font-semibold">{i + 1}</div>
-				{#each meds as med}
-					<div class="mt-1 p-1 rounded text-xs"
-						class:bg-green-500={med.taken}
-						class:bg-pink-500={!med.taken}>
-						{med.name} @ {intToTime(med.time).join(", ")}
-					</div>
-				{/each}
-			</div>
-		{/each}
-	</div>
-</div>
-
-<style>
-	.calendar-container {
-		max-width: 700px;
-		margin: auto;
-	}
-
-	.grid-cols-7 {
-		display: grid;
-		grid-template-columns: repeat(7, 1fr);
-	}
-</style>
-
-
-
-
-
-
-<!-- <div class="flex flex-col gap-4 p-4 lg:flex-row">
+<div class="flex min-h-screen flex-col gap-6 bg-[#151e46] p-4 text-white md:flex-row">
+	<!-- Calendar section -->
 	<div class="flex-1">
-		<h2 class="mb-4 text-xl font-bold">Medication Schedule</h2>
-
-		<div class="grid grid-cols-7 gap-2">
-			{#each ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] as day}
-				<div class="text-center font-semibold">{day}</div>
+		<h2 class="mb-4 text-lg font-bold">Medication Schedule</h2>
+		<div class="grid grid-cols-7 gap-2 text-center">
+			{#each ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] as day}
+				<div class="font-semibold">{day}</div>
 			{/each}
 
-			{#each Array.from({ length: 31 }, (_, i) => i + 1) as day}
-				<div class="min-h-[100px] rounded border bg-gray-100 p-2">
-					<div class="text-sm font-semibold">{day}</div>
-					{#each medications.filter((med) => med.date === `2025-03-${String(day).padStart(2, '0')}`) as med}
-						<div
-							class="mt-1 rounded p-1 text-xs {med.taken
-								? 'bg-green-500'
-								: 'bg-pink-500'} text-white"
-						>
-							{med.name} ({med.time})
-						</div>
-					{/each}
+			<!-- Empty slots before the first day of the month -->
+			{#each Array(getFirstDayOffset(year, month)).fill(null) as _}
+				<div></div>
+			{/each}
+
+			<!-- Calendar days -->
+			{#each Array(getDaysInMonth(year, month))
+				.fill(0)
+				.map((_, i) => i + 1) as day}
+				<div
+					class="cursor-pointer rounded bg-white p-3 text-[#151e46] shadow-md transition-all duration-200 hover:bg-blue-200"
+					on:click={() => selectDate(day)}
+				>
+					<div class="text-sm font-bold">{day}</div>
+					{#if data.user.medications.some((med) => {
+						const weekday = getDayOfWeek(day);
+						const daysArray = intToDay(med.days);
+						return daysArray[weekday];
+					})}
+						<div class="mt-1 text-xs font-medium text-green-600">💊</div>
+					{/if}
 				</div>
 			{/each}
 		</div>
 	</div>
 
-	<div class="w-full rounded border bg-white p-4 shadow-md lg:w-1/3">
-		<h3 class="text-lg font-bold">Today's Medications</h3>
+	<!-- Medication Details Section (Right Panel) -->
+	<div class="flex-1 rounded-md bg-white p-4 text-[#151e46] shadow-lg">
+		<h3 class="mb-3 text-lg font-bold">
+			Todays Medications {selectedDate ? `- ${monthNames[month]} ${$selectedDate}` : ''}
+		</h3>
 
-		{#each medications.filter((med) => med.date === today) as med}
-			<div class="mt-2 flex items-center justify-between rounded bg-gray-100 p-2">
-				<div>
-					<p class="text-sm font-semibold">{med.name}</p>
-					<p class="text-xs text-gray-600">{med.time} | {med.dosage}</p>
-				</div>
-				<span class={med.taken ? 'font-bold text-green-600' : 'font-bold text-pink-600'}>
-					{med.taken ? '✔ Taken' : 'Pending'}
-				</span>
-			</div>
-		{/each}
+		{#if $medicationsForSelectedDate.length > 0}
+			<ul class="space-y-3">
+				{#each $medicationsForSelectedDate as med}
+					<li class="border-l-4 border-blue-600 pl-3">
+						<div class="text-base font-semibold">{med.name}</div>
+						<div class="text-sm text-gray-700">{med.description}</div>
+						<div class="text-xs text-gray-500">
+							Time(s): {intToTime(med.time)
+								.map((t, i) => (t ? `${i.toString().padStart(2, '0')}:00` : null))
+								.filter(Boolean)
+								.join(', ')}
+						</div>
+						{#if med.dose}
+							<div class="text-xs text-gray-500">Dose: {med.dose} {med.units}</div>
+						{/if}
+					</li>
+				{/each}
+			</ul>
+		{:else}
+			<p class="text-gray-500">No medications for this day.</p>
+		{/if}
 	</div>
-</div> -->
+</div>
