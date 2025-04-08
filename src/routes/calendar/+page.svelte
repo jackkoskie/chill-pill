@@ -82,9 +82,9 @@
 			{#each Array(getDaysInMonth(year, month))
 				.fill(0)
 				.map((_, i) => i + 1) as day}
-				<div
+				<button
 					class="cursor-pointer rounded bg-white p-3 text-[#151e46] shadow-md transition-all duration-200 hover:bg-blue-200"
-					on:click={() => selectDate(day)}
+					onclick={() => selectDate(day)}
 				>
 					<div class="text-sm font-bold">{day}</div>
 					{#if data.user.medications.some((med) => {
@@ -94,7 +94,7 @@
 					})}
 						<div class="mt-1 text-xs font-medium text-green-600">💊</div>
 					{/if}
-				</div>
+				</button>
 			{/each}
 		</div>
 	</div>
