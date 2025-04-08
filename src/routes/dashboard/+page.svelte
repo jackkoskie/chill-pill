@@ -170,12 +170,13 @@
 							<p>
 								{weekday},
 								{month}
-								{day}{ordinal(day)}
+								{day}{ordinal(Number(day))}
 							</p>
 						</h1>
 					</li>
 					<li><a href="#dashboard">Dashboard</a></li>
 					<li><a href="#today">Today's Medication</a></li>
+					<li><a href="#actions">Actions</a></li>
 				</div>
 			</ul>
 		</div>
@@ -188,7 +189,7 @@
 				<div class="stat flex flex-col justify-center">
 					<!-- Added flex and centering -->
 					<div class="stat-title text-neutral-content">Active Medications</div>
-					<div class="stat-value">100</div>
+					<div class="stat-value">{allMeds.length}</div>
 				</div>
 			</div>
 			<div class="stats h-32 w-full bg-neutral text-neutral-content">
@@ -196,7 +197,7 @@
 				<div class="stat flex flex-col justify-center">
 					<!-- Added flex and centering -->
 					<div class="stat-title text-neutral-content">Doses Today</div>
-					<div class="stat-value">10</div>
+					<div class="stat-value">{medications.length}</div>
 				</div>
 			</div>
 			<div class="stats h-32 w-full bg-neutral text-neutral-content">
@@ -204,7 +205,9 @@
 				<div class="stat flex flex-col justify-center">
 					<!-- Added flex and centering -->
 					<div class="stat-title text-neutral-content">Upcoming Refills</div>
-					<div class="stat-value">2</div>
+					<div class="stat-value">
+						{data.medications.filter((m) => m.quantity <= m.warningLevel).length}
+					</div>
 				</div>
 			</div>
 			<div class="stats h-32 w-full bg-neutral text-neutral-content">
@@ -219,69 +222,50 @@
 	</div>
 
 	<div class="flex flex-row px-12 py-4" id="today">
-		<h1 class="text-4xl font-bold">Today's Medication</h1>
+		<h1 class="text-4xl font-bold">Today's Medications</h1>
 	</div>
 
-	<div
-		class="mx-auto max-w-4xl justify-center overflow-x-auto rounded-box border border-base-content/5 bg-base-100"
-	>
-		<table class="table">
-			<!-- head -->
-			<thead>
-				<tr>
-					<th></th>
-					<th>Medication</th>
-					<th>Quantity</th>
-					<th>Status</th>
-				</tr>
-			</thead>
-			<tbody>
-				<!-- row 1 -->
-				<tr class="h-28 hover:bg-base-300">
-					<th>1</th>
-					<td>Advil</td>
-					<td>2 tablets</td>
-					<td>Taken</td>
-				</tr>
-				<!-- row 2 -->
-				<tr class="h-28 hover:bg-base-300">
-					<th>2</th>
-					<td>Tylenol</td>
-					<td>1 pill</td>
-					<td>Not Taken</td>
-				</tr>
-				<!-- row 3 -->
-				<tr class=" h-28 hover:bg-base-300">
-					<th>3</th>
-					<td>Dushyant</td>
-					<td>180 lbs</td>
-					<td>Yummy</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-</div>
-
-<div class="mt-6">
-	<!-- if there are no medications to take right now -->
 	{#if medicationsToTake.length === 0}
-		<p>You're all caught up on your medications!</p>
+		<p class="py-32 text-center text-3xl">You're all caught up on your medications!</p>
 	{:else}
-		<!-- if there are medications to take -->
-		<div class="flex flex-col gap-3">
-			{#each medicationsToTake as med}
-				<div class="flex flex-row gap-3">
-					<p>You need to take {med.dose} {med.units} of {med.name} at {med.timeToTake}:00</p>
-					{#if med.quantity > 0}
-						<button class="btn" onclick={() => takeMed(med)}>Take Med</button>
-					{:else}
-						<button class="btn" disabled>Out of Medication</button>
-					{/if}
-					<button class="btn" onclick={() => skipMed(med)}>Skip</button>
-				</div>
-			{/each}
+		<div
+			class="mx-auto max-w-4xl justify-center overflow-x-auto rounded-box border border-base-content/5 bg-base-100"
+		>
+			<table class="table">
+				<!-- head -->
+				<thead>
+					<tr>
+						<th></th>
+						<th>Medication</th>
+						<th>Quantity</th>
+						<th>Status</th>
+						<th>Time to Take</th>
+					</tr>
+				</thead>
+				<tbody>
+					{#each medicationsToTake as med}
+						<tr class="h-28 hover:bg-base-300">
+							<th>{medicationsToTake.indexOf(med) + 1}</th>
+							<td>{med.name}</td>
+							<td>{med.dose} {med.units}</td>
+							<td>
+								{#if med.quantity > 0}
+									<button class="btn" onclick={() => takeMed(med)}>Take Med</button>
+								{:else}
+									<button class="btn" disabled>Out of Medication</button>
+								{/if}
+								<button class="btn" onclick={() => skipMed(med)}>Skip</button></td
+							>
+							<td>{med.timeToTake}:00</td>
+						</tr>
+					{/each}
+				</tbody>
+			</table>
 		</div>
 	{/if}
+	<div class="flex flex-row px-12 py-4" id="actions">
+		<h1 class="text-4xl font-bold">Actions</h1>
+	</div>
 </div>
 
 <div class="mt-3">
