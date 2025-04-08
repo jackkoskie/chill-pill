@@ -83,16 +83,16 @@
 				.fill(0)
 				.map((_, i) => i + 1) as day}
 				<button
-					class="cursor-pointer rounded bg-white p-3 text-[#151e46] shadow-md transition-all duration-200 hover:bg-blue-200"
+					class="flex cursor-pointer flex-col justify-start rounded bg-white p-3 text-[#151e46] shadow-md transition-all duration-200 hover:bg-blue-200"
 					onclick={() => selectDate(day)}
 				>
-					<div class="text-sm font-bold">{day}</div>
+					<span class="text-sm font-bold">{day}</span>
 					{#if data.user.medications.some((med) => {
 						const weekday = getDayOfWeek(day);
 						const daysArray = intToDay(med.days);
 						return daysArray[weekday];
 					})}
-						<div class="mt-1 text-xs font-medium text-green-600">💊</div>
+						<span class="mt-1 text-xs font-medium text-green-600">💊</span>
 					{/if}
 				</button>
 			{/each}
@@ -102,9 +102,7 @@
 	<!-- Medication Details Section (Right Panel) -->
 	<div class="flex-1 rounded-md bg-white p-4 text-[#151e46] shadow-lg">
 		<h3 class="mb-3 text-lg font-bold">
-			{selectedDate === new Date().getDate() ? 'Todays Medications ' : ''}{selectedDate
-				? `- ${monthNames[month]} ${$selectedDate}`
-				: ''}
+			Medication for {selectedDate ? `${monthNames[month]} ${$selectedDate}` : ''}
 		</h3>
 
 		{#if $medicationsForSelectedDate.length > 0}
