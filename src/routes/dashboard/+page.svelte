@@ -146,9 +146,13 @@
 <!-- Top section -->
 <div>
 	<div class="flex w-full flex-row justify-between px-12 py-6" id="dashboard">
-		<div>
-			<h1 class="left-4 top-20 text-4xl font-bold">Dashboard</h1>
-		</div>
+		<h1 class="left-4 top-20 text-4xl font-bold">Dashboard</h1>
+	</div>
+
+	<div class="flex flex-row justify-center">
+		{#if data.medications.filter((med) => med.quantity <= med.warningLevel).length > 0}
+			<label for="modal_1" class="text-md hover:link text-error mb-3">You Have Medications that Need Refilling!</label>
+		{/if}
 	</div>
 
 	<div class="fixed right-4 top-20 z-[50] flex flex-col items-end gap-1">
@@ -263,19 +267,36 @@
 			</table>
 		</div>
 	{/if}
-	<div class="flex flex-row px-12 py-4" id="actions">
+	<div class="px-12 py-4" id="actions">
 		<h1 class="text-4xl font-bold">Actions</h1>
-	</div>
-</div>
+		<div class="mt-3">
+			<div class="flex w-full flex-row items-center justify-center gap-3">
+				<a href="/settings" class="btn btn-lg">Refill your Medications</a>
+				<a href="/calendar" class="btn btn-lg">Check Calendar</a>
+				{#if data.medications.filter((med) => med.quantity <= med.warningLevel).length > 0}
+					<label for="modal_1" class="btn btn-error btn-lg">
+						Warning!
+						<Icon icon="qlementine-icons:warning-16" style="font-size: 20px" />
+					</label>
+				{/if}
+			</div>
 
-<div class="mt-3">
-	<div class="flex flex-row gap-3">
-		<p class="text-lg font-semibold">Medications To Refill</p>
-		<a href="/settings" class="btn btn-sm">Refil at Dashboard</a>
-	</div>
-	<div class="flex flex-col gap-3">
-		{#each data.medications.filter((m) => m.quantity <= m.warningLevel) as med}
-			<p>{med.name} is at {med.quantity} {med.units}</p>
-		{/each}
+			<input type="checkbox" id="modal_1" class="modal-toggle" />
+			<div class="modal" role="dialog">
+				<div class="modal-box">
+					<h3 class="text-lg font-bold">
+						<Icon icon="qlementine-icons:warning-16" style="font-size: 30px" />
+					</h3>
+					<div class="py-4">
+						{#each data.medications.filter((med) => med.quantity <= med.warningLevel) as med}
+							<p>{med.name} has {med.quantity} {med.units} left! Please remember to refill it!</p>
+						{/each}
+					</div>
+					<div class="modal-action">
+						<label for="modal_1" class="btn">Close</label>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
