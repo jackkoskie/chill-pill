@@ -16,7 +16,8 @@ export const load = (async ({ locals }) => {
 			history: {
                 with: {
                     medication: true
-                }
+                },
+				orderBy: (posts, { desc }) => desc(posts.timestamp)
             }
 		}
 	});

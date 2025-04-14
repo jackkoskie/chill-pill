@@ -12,6 +12,7 @@
 	const weekday = date.toLocaleString('default', { weekday: 'long' });
 	const day = date.toLocaleString('defauly', { day: 'numeric' });
 
+	// Function to get the ordinal suffix for a number
 	const ordinal = (date: number) => {
 		if (date > 20 || date < 10) {
 			switch (date % 10) {
