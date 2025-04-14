@@ -114,6 +114,11 @@
 								<li><a href="/calendar">{m.calendar()}</a></li>
 							</ul>
 						</div>
+						<div>
+							<ul class="menu menu-horizontal p-1">
+								<li><a href="/history">History</a></li>
+							</ul>
+						</div>
 						<div class="dropdown dropdown-end">
 							<div class="btn btn-ghost" tabindex="0" role="button">
 								<span>{data.user.name}</span>
