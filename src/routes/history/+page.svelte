@@ -44,7 +44,6 @@
 					<tr>
 						<th>Name</th>
 						<th>Dosage</th>
-						<th>Amount remaining</th>
 						<th>Status</th>
 						<th>Scheduled Time</th>
 						<th>Time Taken</th>
@@ -52,11 +51,20 @@
 					</tr>
 				</thead>
 				<tbody>
-					{#each data.history as h}
-						<tr>
+					{#each data.history as h, i}
+						<!-- Add divider if date changes -->
+						{#if i > 0 && new Date(h.timestamp).getDate() !== new Date(data.history[i - 1].timestamp).getDate()}
+							<tr class="w-full">
+								<!-- <td colspan="6" class="bg-neutral p-1"></td> -->
+
+								<td> </td>
+								<td></td>
+								<td colspan="2"><hr /></td>
+							</tr>
+						{/if}
+						<tr class={h.skip ? 'bg-error text-error-content' : ''}>
 							<td>{h.medication.name}</td>
 							<td>{h.medication.dose} {h.medication.units}</td>
-							<td>{h.medication.quantity} {h.medication.units}</td>
 							<td>{h.skip ? 'Skipped' : 'Taken'}</td>
 							<td>{h.hour}:00</td>
 							<td
@@ -66,13 +74,13 @@
 									hour12: false
 								})}</td
 							>
-							<td>
-								{h.timestamp.toLocaleString('en-US', {
+							<td
+								>{h.timestamp.toLocaleString('en-US', {
 									day: '2-digit',
 									month: '2-digit',
 									year: 'numeric'
-								})}
-							</td>
+								})}</td
+							>
 						</tr>
 					{/each}
 				</tbody>
