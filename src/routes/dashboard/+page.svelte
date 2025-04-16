@@ -12,6 +12,7 @@
 	const weekday = date.toLocaleString('default', { weekday: 'long' });
 	const day = date.toLocaleString('defauly', { day: 'numeric' });
 
+	// Function to get the ordinal suffix for a number
 	const ordinal = (date: number) => {
 		if (date > 20 || date < 10) {
 			switch (date % 10) {
@@ -151,7 +152,9 @@
 
 	<div class="flex flex-row justify-center">
 		{#if data.medications.filter((med) => med.quantity <= med.warningLevel).length > 0}
-			<label for="modal_1" class="text-md hover:link text-error mb-3">You Have Medications that Need Refilling!</label>
+			<label for="modal_1" class="text-md mb-3 text-error hover:link"
+				>You Have Medications that Need Refilling!</label
+			>
 		{/if}
 	</div>
 
@@ -271,6 +274,7 @@
 		<h1 class="text-4xl font-bold">Actions</h1>
 		<div class="mt-3">
 			<div class="flex w-full flex-row items-center justify-center gap-3">
+				<a href="/history" class="btn btn-lg">View your history</a>
 				<a href="/settings" class="btn btn-lg">Refill your Medications</a>
 				<a href="/calendar" class="btn btn-lg">Check Calendar</a>
 				{#if data.medications.filter((med) => med.quantity <= med.warningLevel).length > 0}
@@ -291,7 +295,6 @@
 						{#each data.medications.filter((med) => med.quantity <= med.warningLevel) as med}
 							<p>{med.name} has {med.quantity} {med.units} left! Please remember to refill it!</p>
 						{/each}
-						
 					</div>
 					<div class="modal-action">
 						<a href="/settings" class="btn me-auto">Refill Medications</a>
