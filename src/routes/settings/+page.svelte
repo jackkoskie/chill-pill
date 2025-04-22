@@ -158,7 +158,7 @@
 		<p class="my-1 text-sm text-gray-500">
 			{m.settings_description()}
 		</p>
-		<div class="divider mt-0"></div>
+		<div class="mt-0 divider"></div>
 
 		<h2 class="text-xl font-medium">{m.medications()}</h2>
 		<div class="overflow-x-auto">
@@ -186,30 +186,37 @@
 							<td>
 								<!-- svelte-ignore a11y_click_events_have_key_events -->
 								<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
-								<label for={med.id.toString()} onclick={() => initEditModal(med)}
-									><Icon icon="lucide:edit" /></label
-								>
+								<div class="flex flex-row gap-3">
+									<label for={med.id.toString()} onclick={() => initEditModal(med)}
+										><Icon icon="lucide:edit" />
+									</label>
+
+									{#if med.quantity <= med.warningLevel}
+										<Icon icon="lucide:alert-triangle" class="text-error" />
+									{/if}
+								</div>
+								<!-- The button to open modal -->
 								<input type="checkbox" id={med.id.toString()} class="modal-toggle" />
 								<div class="modal modal-middle z-[9999]" role="dialog">
 									<div class="modal-box">
 										<h3 class="text-lg font-bold">{m.edit_medication({ 'med.name': med.name })}</h3>
-										<div class="mt-1 flex flex-col gap-3">
-											<label class="form-control w-full max-w-xs">
+										<div class="flex flex-col gap-3 mt-1">
+											<label class="w-full max-w-xs form-control">
 												<div class="label">
 													<span class="label-text">{m.name()}</span>
 												</div>
 												<input
 													type="text"
-													class="input input-bordered w-full max-w-xs"
+													class="w-full max-w-xs input input-bordered"
 													bind:value={editName}
 												/>
 											</label>
-											<label class="form-control w-full max-w-xs">
+											<label class="w-full max-w-xs form-control">
 												<div class="label">
 													<span class="label-text">{m.description()}</span>
 												</div>
 												<textarea
-													class="textarea textarea-bordered h-24 resize-none"
+													class="h-24 resize-none textarea textarea-bordered"
 													placeholder={m.description()}
 													bind:value={editDescription}
 												></textarea>
@@ -220,31 +227,31 @@
 														<span class="label-text">{m.days_to_take()}</span>
 													</div>
 													<div class="flex flex-col gap-2">
-														<label class="label cursor-pointer justify-start gap-3 py-0">
+														<label class="justify-start gap-3 py-0 cursor-pointer label">
 															<input type="checkbox" bind:checked={editDays[0]} class="checkbox" />
 															<span class="label-text">Monday</span>
 														</label>
-														<label class="label cursor-pointer justify-start gap-3 py-0">
+														<label class="justify-start gap-3 py-0 cursor-pointer label">
 															<input type="checkbox" bind:checked={editDays[1]} class="checkbox" />
 															<span class="label-text">Tuesday</span>
 														</label>
-														<label class="label cursor-pointer justify-start gap-3 py-0">
+														<label class="justify-start gap-3 py-0 cursor-pointer label">
 															<input type="checkbox" bind:checked={editDays[2]} class="checkbox" />
 															<span class="label-text">Wednesday</span>
 														</label>
-														<label class="label cursor-pointer justify-start gap-3 py-0">
+														<label class="justify-start gap-3 py-0 cursor-pointer label">
 															<input type="checkbox" bind:checked={editDays[3]} class="checkbox" />
 															<span class="label-text">Thursday</span>
 														</label>
-														<label class="label cursor-pointer justify-start gap-3 py-0">
+														<label class="justify-start gap-3 py-0 cursor-pointer label">
 															<input type="checkbox" bind:checked={editDays[4]} class="checkbox" />
 															<span class="label-text">Friday</span>
 														</label>
-														<label class="label cursor-pointer justify-start gap-3 py-0">
+														<label class="justify-start gap-3 py-0 cursor-pointer label">
 															<input type="checkbox" bind:checked={editDays[5]} class="checkbox" />
 															<span class="label-text">Saturday</span>
 														</label>
-														<label class="label cursor-pointer justify-start gap-3 py-0">
+														<label class="justify-start gap-3 py-0 cursor-pointer label">
 															<input type="checkbox" bind:checked={editDays[6]} class="checkbox" />
 															<span class="label-text">Sunday</span>
 														</label>
@@ -258,14 +265,14 @@
 														{#each editTime as enabled, time}
 															{#if enabled}
 																<button
-																	class="my-0 px-2 py-0 text-left hover:text-error hover:line-through"
+																	class="px-2 py-0 my-0 text-left hover:text-error hover:line-through"
 																	onclick={() => (editTime[time] = false)}
 																	>{time.toString().padStart(2, '0')}:00</button
 																>
 															{/if}
 														{/each}
 														<select
-															class="select select-bordered w-full max-w-xs"
+															class="w-full max-w-xs select select-bordered"
 															bind:value={selectTime}
 															onchange={() => {
 																if (selectTime !== -1) {
@@ -284,18 +291,18 @@
 													</div>
 												</div>
 											</div>
-											<label class="form-control w-full max-w-xs">
+											<label class="w-full max-w-xs form-control">
 												<div class="label">
 													<span class="label-text">Dose</span>
 												</div>
 												<div class="flex flex-row gap-3">
 													<input
 														type="text"
-														class="input input-bordered w-24 text-right"
+														class="w-24 text-right input input-bordered"
 														bind:value={editDose}
 													/>
 													<select
-														class="select select-bordered w-full max-w-32"
+														class="w-full select select-bordered max-w-32"
 														bind:value={editUnits}
 													>
 														<option disabled selected>Units</option>
@@ -312,27 +319,27 @@
 												</div>
 											</label>
 											<div class="flex flex-row gap-3">
-												<label class="form-control w-full max-w-xs">
+												<label class="w-full max-w-xs form-control">
 													<div class="label">
 														<span class="label-text">{m.quantity()}</span>
 													</div>
 													<div class="flex flex-row items-baseline gap-3">
 														<input
 															type="text"
-															class="input input-bordered w-24 text-right"
+															class="w-24 text-right input input-bordered"
 															bind:value={editQuantity}
 														/>
 														<span>{editUnits}</span>
 													</div>
 												</label>
-												<label class="form-control w-full max-w-xs">
+												<label class="w-full max-w-xs form-control">
 													<div class="label">
 														<span class="label-text">{m.refill_at()}</span>
 													</div>
 													<div class="flex flex-row items-baseline gap-3">
 														<input
 															type="text"
-															class="input input-bordered w-24 text-right"
+															class="w-24 text-right input input-bordered"
 															bind:value={editWarningLevel}
 														/>
 														<span>{editUnits}</span>
@@ -367,7 +374,7 @@
 			<!-- The button to open modal -->
 			<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 			<!-- svelte-ignore a11y_click_events_have_key_events -->
-			<label for="add_modal" class="btn btn-outline btn-success mt-4" onclick={initAddModal}
+			<label for="add_modal" class="mt-4 btn btn-outline btn-success" onclick={initAddModal}
 				>Add Medication</label
 			>
 
@@ -376,23 +383,23 @@
 			<div class="modal modal-middle z-[9999]" role="dialog">
 				<div class="modal-box">
 					<h3 class="text-lg font-bold">Add Medication</h3>
-					<div class="mt-1 flex flex-col gap-3">
-						<label class="form-control w-full max-w-xs">
+					<div class="flex flex-col gap-3 mt-1">
+						<label class="w-full max-w-xs form-control">
 							<div class="label">
 								<span class="label-text">Name</span>
 							</div>
 							<input
 								type="text"
-								class="input input-bordered w-full max-w-xs"
+								class="w-full max-w-xs input input-bordered"
 								bind:value={editName}
 							/>
 						</label>
-						<label class="form-control w-full max-w-xs">
+						<label class="w-full max-w-xs form-control">
 							<div class="label">
 								<span class="label-text">Description</span>
 							</div>
 							<textarea
-								class="textarea textarea-bordered h-24 resize-none"
+								class="h-24 resize-none textarea textarea-bordered"
 								placeholder="Description"
 								bind:value={editDescription}
 							></textarea>
@@ -401,31 +408,31 @@
 							<div class="form-control">
 								<div class="label"><span class="label-text">Days to Take</span></div>
 								<div class="flex flex-col gap-2">
-									<label class="label cursor-pointer justify-start gap-3 py-0">
+									<label class="justify-start gap-3 py-0 cursor-pointer label">
 										<input type="checkbox" bind:checked={editDays[0]} class="checkbox" />
 										<span class="label-text">Monday</span>
 									</label>
-									<label class="label cursor-pointer justify-start gap-3 py-0">
+									<label class="justify-start gap-3 py-0 cursor-pointer label">
 										<input type="checkbox" bind:checked={editDays[1]} class="checkbox" />
 										<span class="label-text">Tuesday</span>
 									</label>
-									<label class="label cursor-pointer justify-start gap-3 py-0">
+									<label class="justify-start gap-3 py-0 cursor-pointer label">
 										<input type="checkbox" bind:checked={editDays[2]} class="checkbox" />
 										<span class="label-text">Wednesday</span>
 									</label>
-									<label class="label cursor-pointer justify-start gap-3 py-0">
+									<label class="justify-start gap-3 py-0 cursor-pointer label">
 										<input type="checkbox" bind:checked={editDays[3]} class="checkbox" />
 										<span class="label-text">Thursday</span>
 									</label>
-									<label class="label cursor-pointer justify-start gap-3 py-0">
+									<label class="justify-start gap-3 py-0 cursor-pointer label">
 										<input type="checkbox" bind:checked={editDays[4]} class="checkbox" />
 										<span class="label-text">Friday</span>
 									</label>
-									<label class="label cursor-pointer justify-start gap-3 py-0">
+									<label class="justify-start gap-3 py-0 cursor-pointer label">
 										<input type="checkbox" bind:checked={editDays[5]} class="checkbox" />
 										<span class="label-text">Saturday</span>
 									</label>
-									<label class="label cursor-pointer justify-start gap-3 py-0">
+									<label class="justify-start gap-3 py-0 cursor-pointer label">
 										<input type="checkbox" bind:checked={editDays[6]} class="checkbox" />
 										<span class="label-text">Sunday</span>
 									</label>
@@ -437,14 +444,14 @@
 									{#each editTime as enabled, time}
 										{#if enabled}
 											<button
-												class="my-0 px-2 py-0 text-left hover:text-error hover:line-through"
+												class="px-2 py-0 my-0 text-left hover:text-error hover:line-through"
 												onclick={() => (editTime[time] = false)}
 												>{time.toString().padStart(2, '0')}:00</button
 											>
 										{/if}
 									{/each}
 									<select
-										class="select select-bordered w-full max-w-xs"
+										class="w-full max-w-xs select select-bordered"
 										bind:value={selectTime}
 										onchange={() => {
 											if (selectTime !== -1) {
@@ -463,17 +470,17 @@
 								</div>
 							</div>
 						</div>
-						<label class="form-control w-full max-w-xs">
+						<label class="w-full max-w-xs form-control">
 							<div class="label">
 								<span class="label-text">Dose</span>
 							</div>
 							<div class="flex flex-row gap-3">
 								<input
 									type="text"
-									class="input input-bordered w-24 text-right"
+									class="w-24 text-right input input-bordered"
 									bind:value={editDose}
 								/>
-								<select class="select select-bordered w-full max-w-32" bind:value={editUnits}>
+								<select class="w-full select select-bordered max-w-32" bind:value={editUnits}>
 									<option disabled selected>Units</option>
 									<option value="mg">mg</option>
 									<option value="g">g</option>
@@ -488,27 +495,27 @@
 							</div>
 						</label>
 						<div class="flex flex-row gap-3">
-							<label class="form-control w-full max-w-xs">
+							<label class="w-full max-w-xs form-control">
 								<div class="label">
 									<span class="label-text">Total Quantity</span>
 								</div>
 								<div class="flex flex-row items-baseline gap-3">
 									<input
 										type="text"
-										class="input input-bordered w-24 text-right"
+										class="w-24 text-right input input-bordered"
 										bind:value={editQuantity}
 									/>
 									<span>{editUnits}</span>
 								</div>
 							</label>
-							<label class="form-control w-full max-w-xs">
+							<label class="w-full max-w-xs form-control">
 								<div class="label">
 									<span class="label-text">{m.refill_at()}</span>
 								</div>
 								<div class="flex flex-row items-baseline gap-3">
 									<input
 										type="text"
-										class="input input-bordered w-24 text-right"
+										class="w-24 text-right input input-bordered"
 										bind:value={editWarningLevel}
 									/>
 									<span>{editUnits}</span>

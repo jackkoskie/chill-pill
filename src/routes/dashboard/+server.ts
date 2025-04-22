@@ -26,7 +26,8 @@ export const POST: RequestHandler = async ({ locals, request }) => {
 		hour: body.hour,
 		medicationID: body.medId,
 		userID: body.userId,
-		skip: body.skip
+		skip: body.skip,
+		timestamp: new Date()
 	});
 
 	if (!body.skip) {
