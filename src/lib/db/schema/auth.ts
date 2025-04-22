@@ -7,7 +7,7 @@ export const authSessions = sqliteTable('auth_sessions', {
 	id: text('id').primaryKey(),
 	userId: int('user_id')
 		.notNull()
-		.references(() => users.id),
+		.references(() => users.id, { onDelete: 'cascade' }),
 	expiresAt: int('expires_at', {
 		mode: 'timestamp'
 	}).notNull()

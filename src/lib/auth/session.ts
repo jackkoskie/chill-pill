@@ -110,13 +110,14 @@ export async function getUserFromGoogleId(
 export async function createUser(
 	googleUserId: string,
 	username: string,
+	email: string,
 	locals: App.Locals
 ): Promise<User> {
 	const { db } = locals;
 
 	await db.insert(users).values({
 		name: username,
-		email: '',
+		email,
 		googleId: googleUserId
 	});
 

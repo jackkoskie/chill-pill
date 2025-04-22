@@ -37,15 +37,15 @@
 		<div class="mt-12 grid gap-8 md:grid-cols-3">
 			<div class="rounded-lg bg-white p-6 text-center shadow-lg">
 				<h3 class="mt-4 text-xl font-semibold text-blue-600">Jack Koskie</h3>
-				<p class="text-gray-500">Roles</p>
+				<p class="text-gray-500">Developer</p>
 			</div>
 			<div class="rounded-lg bg-white p-6 text-center shadow-lg">
 				<h3 class="mt-4 text-xl font-semibold text-blue-600">Dushyant Saini</h3>
-				<p class="text-gray-500">Roles</p>
+				<p class="text-gray-500">Developer</p>
 			</div>
 			<div class="rounded-lg bg-white p-6 text-center shadow-lg">
 				<h3 class="mt-4 text-xl font-semibold text-blue-600">Eric Du</h3>
-				<p class="text-gray-500">Roles</p>
+				<p class="text-gray-500">Developer</p>
 			</div>
 		</div>
 	</div>
