@@ -62,6 +62,7 @@ export async function validateSessionToken(
 export async function invalidateSession(sessionId: string, locals: App.Locals): Promise<void> {
 	const { db } = locals;
 	await db.delete(authSessions).where(eq(authSessions.id, sessionId));
+	console.log('Invalidated session');
 }
 
 export function setSessionTokenCookie(event: RequestEvent, token: string, expiresAt: Date): void {
