@@ -7,10 +7,10 @@ export const medicationHistories = sqliteTable('medication_history', {
 	id: int().primaryKey({ autoIncrement: true }).notNull(),
 	userID: int()
 		.notNull()
-		.references(() => users.id),
+		.references(() => users.id, { onDelete: 'cascade' }),
 	medicationID: int()
 		.notNull()
-		.references(() => medications.id),
+		.references(() => medications.id, { onDelete: 'cascade' }),
 	timestamp: int({ mode: 'timestamp_ms' }).notNull().default(new Date()),
 	hour: int().notNull(), // 0-23 the hours of the day it was taken
 	skip: int({ mode: 'boolean' }).notNull().default(false)

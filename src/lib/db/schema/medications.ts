@@ -13,7 +13,7 @@ export const medications = sqliteTable('medications', {
 	units: text().notNull(),
 	userID: int()
 		.notNull()
-		.references(() => users.id),
+		.references(() => users.id, { onDelete: 'cascade' }),
 	quantity: real().notNull().default(0),
 	warningLevel: real('warning_level').notNull().default(0)
 });

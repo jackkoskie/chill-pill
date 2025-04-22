@@ -43,6 +43,16 @@ export async function GET(event: RequestEvent): Promise<Response> {
 	const googleUserId = claims.sub;
 	const username = claims.name;
 
+	const res = await fetch('https://www.googleapis.com/oauth2/v3/userinfo?scope=email', {
+		headers: {
+			Authorization: `Bearer ${tokens.accessToken()}`
+		}
+	});
+
+	const data = (await res.json()) as { email: string };
+
+	const email = data.email;
+
 	const existingUser = await getUserFromGoogleId(googleUserId, locals);
 
 	if (existingUser) {
@@ -57,7 +67,7 @@ export async function GET(event: RequestEvent): Promise<Response> {
 		});
 	}
 
-	const user = await createUser(googleUserId, username, locals);
+	const user = await createUser(googleUserId, username, email, locals);
 
 	const sessionToken = generateSessionToken();
 	const session = await createSession(sessionToken, user.id, locals);
