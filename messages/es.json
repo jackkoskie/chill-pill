@@ -12,5 +12,7 @@
 	"logout": "Finalizar la sesión",
 	"login": "Acceso",
 	"about_us": "Sobre nosotros",
-	"our_mission": "Nuestra misión"
+	"about_us_1": "En ChillPill, creemos que administrar sus medicamentos debe ser sencillo, confiable y sin estrés. Nuestro objetivo es ayudar a personas, cuidadores y profesionales de la salud a controlar fácilmente sus horarios de medicación. Nuestra plataforma garantiza que nunca se olviden de una dosis gracias a recordatorios intuitivos, programación inteligente y notificaciones en tiempo real. Ya sea que administre sus recetas o las de un ser querido, nuestra aplicación le facilita el control de su salud.",
+	"our_mission": "Nuestra misión",
+	"about_us_2": "Nos comprometemos a aprovechar la tecnología para mejorar la adherencia a la medicación y reducir las omisiones.\r\ndosis y favorecer mejores resultados de salud. Al combinar una interfaz fácil de usar con potentes...\r\nCaracterísticas, nuestro objetivo es cerrar la brecha entre los proveedores de atención médica y los pacientes."
 }
