@@ -20,5 +20,9 @@
 	"dashboard": "Panel",
 	"greeting_afternoon": "Buenas tardes, {name} !",
 	"greeting_morning": "Buenos días, {name} !",
-	"greeting_evening": "Buenas noches, {name} !"
+	"greeting_evening": "Buenas noches, {name} !",
+	"medications": "Medicamentos",
+	"name": "Nombre",
+	"days_to_take": "Días para tomar",
+	"time_to_take": "Hora de tomar"
 }

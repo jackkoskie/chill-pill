@@ -20,5 +20,9 @@
 	"dashboard": "Tableau de bord",
 	"greeting_afternoon": "Bonne après-midi, {name} !",
 	"greeting_morning": "Bonjour, {name} !",
-	"greeting_evening": "Bonsoir, {name} !"
+	"greeting_evening": "Bonsoir, {name} !",
+	"medications": "Médicaments",
+	"name": "Nom",
+	"days_to_take": "Jours à prendre",
+	"time_to_take": "Il est temps de prendre"
 }
