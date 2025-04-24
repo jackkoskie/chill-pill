@@ -24,5 +24,7 @@
 	"medications": "Medicamentos",
 	"name": "Nombre",
 	"days_to_take": "Días para tomar",
-	"time_to_take": "Hora de tomar"
+	"time_to_take": "Hora de tomar",
+	"dose": "Dosis",
+	"quantity": "Cantidad"
 }
