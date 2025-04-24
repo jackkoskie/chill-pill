@@ -2,6 +2,7 @@
 	"$schema": "https://inlang.com/schema/inlang-message-format",
 	"language": "Français",
 	"brand_name": "ChillPill",
+	"menu_notifications": "Notifications",
 	"notifications": "Notifications",
 	"calendar": "Calendrier",
 	"medication": "Médicament",
