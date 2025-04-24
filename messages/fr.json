@@ -30,5 +30,7 @@
 	"refill_at": "Recharge à",
 	"edit_medication": "Modifier {med.name}",
 	"description": "Description",
-	"delete_med": "Supprimer"
+	"delete_med": "Supprimer",
+	"save_med": "Sauvegarder",
+	"settings_description": "Utilisez cette page pour configurer tous les médicaments que vous prenez."
 }
