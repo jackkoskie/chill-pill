@@ -18,5 +18,7 @@
 	"who_we_are": "Quienes somos",
 	"about_us_3": "Somos un equipo de desarrolladores y diseñadores apasionados dedicados a hacer que la atención médica sea más\r\nAccesible y manejable a través de la tecnología. Con un fuerte enfoque en la experiencia del usuario,\r\nSeguridad e innovación, nos esforzamos por crear software que marque una verdadera diferencia.\r\nla vida de las personas.",
 	"dashboard": "Panel",
-	"greeting_afternoon": "Buenas tardes, {name} !"
+	"greeting_afternoon": "Buenas tardes, {name} !",
+	"greeting_morning": "Buenos días, {name} !",
+	"greeting_evening": "Buenas noches, {name} !"
 }

@@ -18,5 +18,7 @@
 	"who_we_are": "Qui sommes-nous",
 	"about_us_3": "Nous sommes une équipe de développeurs et de concepteurs passionnés qui se consacrent à rendre les soins de santé plus\r\nAccessible et gérable grâce à la technologie. En mettant l'accent sur l'expérience utilisateur,\r\nsécurité et innovation, nous nous efforçons de créer des logiciels qui font une réelle différence dans\r\nla vie des gens.",
 	"dashboard": "Tableau de bord",
-	"greeting_afternoon": "Bonne après-midi, {name} !"
+	"greeting_afternoon": "Bonne après-midi, {name} !",
+	"greeting_morning": "Bonjour, {name} !",
+	"greeting_evening": "Bonsoir, {name} !"
 }
