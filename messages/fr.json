@@ -26,5 +26,9 @@
 	"days_to_take": "Jours à prendre",
 	"time_to_take": "Il est temps de prendre",
 	"dose": "Dose",
-	"quantity": "Quantité"
+	"quantity": "Quantité",
+	"refill_at": "Recharge à",
+	"edit_medication": "Modifier {med.name}",
+	"description": "Description",
+	"delete_med": "Supprimer"
 }
