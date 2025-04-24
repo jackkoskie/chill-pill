@@ -35,7 +35,7 @@
 <section class="">
 	<div class="container mx-auto">
 		<h1 class="pt-6 text-3xl font-semibold">{getGreeting(data.user!.name.split(' ')[0])}</h1>
-		<p class="my-1 text-sm text-gray-500">Use this page to view your medication history.</p>
+		<p class="my-1 text-sm text-gray-500">m.greeting_history()</p>
 		<div class="divider mt-0"></div>
 		<h2 class="text-xl font-medium">History</h2>
 		<div class="overflow-x-auto">
