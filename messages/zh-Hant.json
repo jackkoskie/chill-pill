@@ -4,5 +4,6 @@
 	"brand_name": "ChillPill",
 	"notifications": "通知",
 	"calendar": "日历",
-	"login": "登入"
+	"login": "登入",
+	"greeting_history": "使用此頁面查看您的用藥記錄。"
 }
