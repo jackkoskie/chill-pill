@@ -32,5 +32,6 @@
 	"description": "Descripción",
 	"delete_med": "Borrar",
 	"save_med": "Ahorrar",
-	"settings_description": "Utilice esta página para configurar todos los medicamentos que toma."
+	"settings_description": "Utilice esta página para configurar todos los medicamentos que toma.",
+	"greeting_history": "Utilice esta página para ver su historial de medicamentos."
 }
