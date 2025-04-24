@@ -17,5 +17,6 @@
 	"about_us_2": "Nous nous engageons à tirer parti de la technologie pour améliorer l'observance du traitement, réduire les doses manquées et\r\ndoses et favoriser de meilleurs résultats en matière de santé. En combinant une interface conviviale et des outils performants,\r\nfonctionnalités, nous visons à combler le fossé entre les prestataires de soins de santé et les patients.",
 	"who_we_are": "Qui sommes-nous",
 	"about_us_3": "Nous sommes une équipe de développeurs et de concepteurs passionnés qui se consacrent à rendre les soins de santé plus\r\nAccessible et gérable grâce à la technologie. En mettant l'accent sur l'expérience utilisateur,\r\nsécurité et innovation, nous nous efforçons de créer des logiciels qui font une réelle différence dans\r\nla vie des gens.",
-	"dashboard": "Tableau de bord"
+	"dashboard": "Tableau de bord",
+	"greeting_afternoon": "Bonne après-midi, {name} !"
 }
