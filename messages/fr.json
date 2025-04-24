@@ -24,14 +24,5 @@
 	"medications": "Médicaments",
 	"name": "Nom",
 	"days_to_take": "Jours à prendre",
-	"time_to_take": "Il est temps de prendre",
-	"dose": "Dose",
-	"quantity": "Quantité",
-	"refill_at": "Recharge à",
-	"edit_medication": "Modifier {med.name}",
-	"description": "Description",
-	"delete_med": "Supprimer",
-	"save_med": "Sauvegarder",
-	"settings_description": "Utilisez cette page pour configurer tous les médicaments que vous prenez.",
-	"greeting_history": "Utilisez cette page pour consulter votre historique de médicaments."
+	"time_to_take": "Il est temps de prendre"
 }
