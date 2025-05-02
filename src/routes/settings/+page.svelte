@@ -577,6 +577,19 @@
 			</div>
 			<button type="submit" class="btn btn-outline btn-success">Add Family Member</button>
 		</form>
-		<ul></ul>
+		<ul class="mt-2">
+			{#each data.user?.familyMembers ?? [] as family}
+				<li class="">
+					<form action="?/deleteFamilyMember" method="POST" use:enhance>
+						<input type="text" value={family.id} name="id" required hidden />
+						<input
+							type="submit"
+							class="hover:text-error hover:line-through"
+							value="- {family.familyMember.name} ({family.familyMember.email})"
+						/>
+					</form>
+				</li>
+			{/each}
+		</ul>
 	</div>
 </section>

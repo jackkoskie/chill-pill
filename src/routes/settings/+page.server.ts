@@ -100,5 +100,55 @@ export const actions = {
 		};
 
 		return;
+	},
+	deleteFamilyMember: async ({ locals, request }) => {
+		const data = await request.formData();
+		const familyId = (data.get('id') ?? -1) as number;
+
+		if (!locals.user) {
+			redirect(303, '/login');
+		}
+
+		if (familyId === -1) {
+			return fail(400, {
+				ok: false,
+				message: 'Family relation not found'
+			});
+		}
+
+		const family = await locals.db.query.familyMembers.findFirst({
+			where: eq(schema.familyMembers.id, familyId),
+			with: {
+				user: true,
+				familyMember: true
+			}
+		});
+
+		if (!family) {
+			return fail(400, {
+				ok: false,
+				message: 'Family relation not found'
+			});
+		}
+
+		if (family.user.id !== locals.user.id) {
+			return fail(403, {
+				ok: false,
+				message: 'You are not allowed to delete this family member'
+			});
+		}
+
+		try {
+			await locals.db.delete(schema.familyMembers).where(eq(schema.familyMembers.id, familyId));
+			return {
+				ok: true,
+				message: 'Family member deleted'
+			};
+		} catch (error) {
+			return fail(400, {
+				message: error,
+				ok: false
+			});
+		}
 	}
 };
