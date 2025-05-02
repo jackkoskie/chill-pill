@@ -98,8 +98,6 @@ export const actions = {
 			message: 'Family member added',
 			ok: true
 		};
-
-		return;
 	},
 	deleteFamilyMember: async ({ locals, request }) => {
 		const data = await request.formData();
@@ -145,8 +143,9 @@ export const actions = {
 				message: 'Family member deleted'
 			};
 		} catch (error) {
+			console.error('Error deleting family member:', error);
 			return fail(400, {
-				message: error,
+				message: 'An unexpected error occurred while deleting the family member.',
 				ok: false
 			});
 		}
