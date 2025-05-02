@@ -13,12 +13,26 @@ export const load = (async ({ locals }) => {
 	const user = await db.query.users.findFirst({
 		where: eq(users.id, locals.user.id),
 		with: {
+			familyOf: {
+				with: {
+					user: {
+						with: {
+							history: {
+								with: {
+									medication: true
+								},
+								orderBy: (entry, { desc }) => desc(entry.timestamp)
+							}
+						}
+					}
+				}
+			},
 			history: {
-                with: {
-                    medication: true
-                },
-				orderBy: (posts, { desc }) => desc(posts.timestamp)
-            }
+				with: {
+					medication: true
+				},
+				orderBy: (entry, { desc }) => desc(entry.timestamp)
+			}
 		}
 	});
 

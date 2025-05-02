@@ -57,6 +57,20 @@
       "when": 1743544950023,
       "tag": "0007_next_lifeguard",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "6",
+      "when": 1745339249246,
+      "tag": "0008_nifty_captain_cross",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "6",
+      "when": 1746022137096,
+      "tag": "0009_bent_satana",
+      "breakpoints": true
     }
   ]
 }

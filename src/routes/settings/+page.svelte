@@ -1,8 +1,9 @@
 <script lang="ts">
-	import type { PageData } from './$types';
+	import type { ActionData, PageData } from './$types';
 	import * as m from '$lib/paraglide/messages';
 	import { users, type Medication } from '$lib/db/schema';
 	import Icon from '@iconify/svelte';
+	import { enhance } from '$app/forms';
 
 	import {
 		dayToInt,
@@ -13,7 +14,7 @@
 		timeToString
 	} from '$lib/utils/converter';
 
-	let { data }: { data: PageData } = $props();
+	let { data, form }: { data: PageData; form: ActionData } = $props();
 
 	const getGreeting = (name: string) => {
 		const date = new Date();
@@ -158,7 +159,7 @@
 		<p class="my-1 text-sm text-gray-500">
 			{m.settings_description()}
 		</p>
-		<div class="mt-0 divider"></div>
+		<div class="divider mt-0"></div>
 
 		<h2 class="text-xl font-medium">{m.medications()}</h2>
 		<div class="overflow-x-auto">
@@ -200,23 +201,23 @@
 								<div class="modal modal-middle z-[9999]" role="dialog">
 									<div class="modal-box">
 										<h3 class="text-lg font-bold">{m.edit_medication({ 'med.name': med.name })}</h3>
-										<div class="flex flex-col gap-3 mt-1">
-											<label class="w-full max-w-xs form-control">
+										<div class="mt-1 flex flex-col gap-3">
+											<label class="form-control w-full max-w-xs">
 												<div class="label">
 													<span class="label-text">{m.name()}</span>
 												</div>
 												<input
 													type="text"
-													class="w-full max-w-xs input input-bordered"
+													class="input input-bordered w-full max-w-xs"
 													bind:value={editName}
 												/>
 											</label>
-											<label class="w-full max-w-xs form-control">
+											<label class="form-control w-full max-w-xs">
 												<div class="label">
 													<span class="label-text">{m.description()}</span>
 												</div>
 												<textarea
-													class="h-24 resize-none textarea textarea-bordered"
+													class="textarea textarea-bordered h-24 resize-none"
 													placeholder={m.description()}
 													bind:value={editDescription}
 												></textarea>
@@ -227,31 +228,31 @@
 														<span class="label-text">{m.days_to_take()}</span>
 													</div>
 													<div class="flex flex-col gap-2">
-														<label class="justify-start gap-3 py-0 cursor-pointer label">
+														<label class="label cursor-pointer justify-start gap-3 py-0">
 															<input type="checkbox" bind:checked={editDays[0]} class="checkbox" />
 															<span class="label-text">Monday</span>
 														</label>
-														<label class="justify-start gap-3 py-0 cursor-pointer label">
+														<label class="label cursor-pointer justify-start gap-3 py-0">
 															<input type="checkbox" bind:checked={editDays[1]} class="checkbox" />
 															<span class="label-text">Tuesday</span>
 														</label>
-														<label class="justify-start gap-3 py-0 cursor-pointer label">
+														<label class="label cursor-pointer justify-start gap-3 py-0">
 															<input type="checkbox" bind:checked={editDays[2]} class="checkbox" />
 															<span class="label-text">Wednesday</span>
 														</label>
-														<label class="justify-start gap-3 py-0 cursor-pointer label">
+														<label class="label cursor-pointer justify-start gap-3 py-0">
 															<input type="checkbox" bind:checked={editDays[3]} class="checkbox" />
 															<span class="label-text">Thursday</span>
 														</label>
-														<label class="justify-start gap-3 py-0 cursor-pointer label">
+														<label class="label cursor-pointer justify-start gap-3 py-0">
 															<input type="checkbox" bind:checked={editDays[4]} class="checkbox" />
 															<span class="label-text">Friday</span>
 														</label>
-														<label class="justify-start gap-3 py-0 cursor-pointer label">
+														<label class="label cursor-pointer justify-start gap-3 py-0">
 															<input type="checkbox" bind:checked={editDays[5]} class="checkbox" />
 															<span class="label-text">Saturday</span>
 														</label>
-														<label class="justify-start gap-3 py-0 cursor-pointer label">
+														<label class="label cursor-pointer justify-start gap-3 py-0">
 															<input type="checkbox" bind:checked={editDays[6]} class="checkbox" />
 															<span class="label-text">Sunday</span>
 														</label>
@@ -265,14 +266,14 @@
 														{#each editTime as enabled, time}
 															{#if enabled}
 																<button
-																	class="px-2 py-0 my-0 text-left hover:text-error hover:line-through"
+																	class="my-0 px-2 py-0 text-left hover:text-error hover:line-through"
 																	onclick={() => (editTime[time] = false)}
 																	>{time.toString().padStart(2, '0')}:00</button
 																>
 															{/if}
 														{/each}
 														<select
-															class="w-full max-w-xs select select-bordered"
+															class="select select-bordered w-full max-w-xs"
 															bind:value={selectTime}
 															onchange={() => {
 																if (selectTime !== -1) {
@@ -291,18 +292,18 @@
 													</div>
 												</div>
 											</div>
-											<label class="w-full max-w-xs form-control">
+											<label class="form-control w-full max-w-xs">
 												<div class="label">
 													<span class="label-text">Dose</span>
 												</div>
 												<div class="flex flex-row gap-3">
 													<input
 														type="text"
-														class="w-24 text-right input input-bordered"
+														class="input input-bordered w-24 text-right"
 														bind:value={editDose}
 													/>
 													<select
-														class="w-full select select-bordered max-w-32"
+														class="select select-bordered w-full max-w-32"
 														bind:value={editUnits}
 													>
 														<option disabled selected>Units</option>
@@ -319,27 +320,27 @@
 												</div>
 											</label>
 											<div class="flex flex-row gap-3">
-												<label class="w-full max-w-xs form-control">
+												<label class="form-control w-full max-w-xs">
 													<div class="label">
 														<span class="label-text">{m.quantity()}</span>
 													</div>
 													<div class="flex flex-row items-baseline gap-3">
 														<input
 															type="text"
-															class="w-24 text-right input input-bordered"
+															class="input input-bordered w-24 text-right"
 															bind:value={editQuantity}
 														/>
 														<span>{editUnits}</span>
 													</div>
 												</label>
-												<label class="w-full max-w-xs form-control">
+												<label class="form-control w-full max-w-xs">
 													<div class="label">
 														<span class="label-text">{m.refill_at()}</span>
 													</div>
 													<div class="flex flex-row items-baseline gap-3">
 														<input
 															type="text"
-															class="w-24 text-right input input-bordered"
+															class="input input-bordered w-24 text-right"
 															bind:value={editWarningLevel}
 														/>
 														<span>{editUnits}</span>
@@ -374,7 +375,7 @@
 			<!-- The button to open modal -->
 			<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 			<!-- svelte-ignore a11y_click_events_have_key_events -->
-			<label for="add_modal" class="mt-4 btn btn-outline btn-success" onclick={initAddModal}
+			<label for="add_modal" class="btn btn-outline btn-success mt-4" onclick={initAddModal}
 				>Add Medication</label
 			>
 
@@ -383,23 +384,23 @@
 			<div class="modal modal-middle z-[9999]" role="dialog">
 				<div class="modal-box">
 					<h3 class="text-lg font-bold">Add Medication</h3>
-					<div class="flex flex-col gap-3 mt-1">
-						<label class="w-full max-w-xs form-control">
+					<div class="mt-1 flex flex-col gap-3">
+						<label class="form-control w-full max-w-xs">
 							<div class="label">
 								<span class="label-text">Name</span>
 							</div>
 							<input
 								type="text"
-								class="w-full max-w-xs input input-bordered"
+								class="input input-bordered w-full max-w-xs"
 								bind:value={editName}
 							/>
 						</label>
-						<label class="w-full max-w-xs form-control">
+						<label class="form-control w-full max-w-xs">
 							<div class="label">
 								<span class="label-text">Description</span>
 							</div>
 							<textarea
-								class="h-24 resize-none textarea textarea-bordered"
+								class="textarea textarea-bordered h-24 resize-none"
 								placeholder="Description"
 								bind:value={editDescription}
 							></textarea>
@@ -408,31 +409,31 @@
 							<div class="form-control">
 								<div class="label"><span class="label-text">Days to Take</span></div>
 								<div class="flex flex-col gap-2">
-									<label class="justify-start gap-3 py-0 cursor-pointer label">
+									<label class="label cursor-pointer justify-start gap-3 py-0">
 										<input type="checkbox" bind:checked={editDays[0]} class="checkbox" />
 										<span class="label-text">Monday</span>
 									</label>
-									<label class="justify-start gap-3 py-0 cursor-pointer label">
+									<label class="label cursor-pointer justify-start gap-3 py-0">
 										<input type="checkbox" bind:checked={editDays[1]} class="checkbox" />
 										<span class="label-text">Tuesday</span>
 									</label>
-									<label class="justify-start gap-3 py-0 cursor-pointer label">
+									<label class="label cursor-pointer justify-start gap-3 py-0">
 										<input type="checkbox" bind:checked={editDays[2]} class="checkbox" />
 										<span class="label-text">Wednesday</span>
 									</label>
-									<label class="justify-start gap-3 py-0 cursor-pointer label">
+									<label class="label cursor-pointer justify-start gap-3 py-0">
 										<input type="checkbox" bind:checked={editDays[3]} class="checkbox" />
 										<span class="label-text">Thursday</span>
 									</label>
-									<label class="justify-start gap-3 py-0 cursor-pointer label">
+									<label class="label cursor-pointer justify-start gap-3 py-0">
 										<input type="checkbox" bind:checked={editDays[4]} class="checkbox" />
 										<span class="label-text">Friday</span>
 									</label>
-									<label class="justify-start gap-3 py-0 cursor-pointer label">
+									<label class="label cursor-pointer justify-start gap-3 py-0">
 										<input type="checkbox" bind:checked={editDays[5]} class="checkbox" />
 										<span class="label-text">Saturday</span>
 									</label>
-									<label class="justify-start gap-3 py-0 cursor-pointer label">
+									<label class="label cursor-pointer justify-start gap-3 py-0">
 										<input type="checkbox" bind:checked={editDays[6]} class="checkbox" />
 										<span class="label-text">Sunday</span>
 									</label>
@@ -444,14 +445,14 @@
 									{#each editTime as enabled, time}
 										{#if enabled}
 											<button
-												class="px-2 py-0 my-0 text-left hover:text-error hover:line-through"
+												class="my-0 px-2 py-0 text-left hover:text-error hover:line-through"
 												onclick={() => (editTime[time] = false)}
 												>{time.toString().padStart(2, '0')}:00</button
 											>
 										{/if}
 									{/each}
 									<select
-										class="w-full max-w-xs select select-bordered"
+										class="select select-bordered w-full max-w-xs"
 										bind:value={selectTime}
 										onchange={() => {
 											if (selectTime !== -1) {
@@ -470,17 +471,17 @@
 								</div>
 							</div>
 						</div>
-						<label class="w-full max-w-xs form-control">
+						<label class="form-control w-full max-w-xs">
 							<div class="label">
 								<span class="label-text">Dose</span>
 							</div>
 							<div class="flex flex-row gap-3">
 								<input
 									type="text"
-									class="w-24 text-right input input-bordered"
+									class="input input-bordered w-24 text-right"
 									bind:value={editDose}
 								/>
-								<select class="w-full select select-bordered max-w-32" bind:value={editUnits}>
+								<select class="select select-bordered w-full max-w-32" bind:value={editUnits}>
 									<option disabled selected>Units</option>
 									<option value="mg">mg</option>
 									<option value="g">g</option>
@@ -495,27 +496,27 @@
 							</div>
 						</label>
 						<div class="flex flex-row gap-3">
-							<label class="w-full max-w-xs form-control">
+							<label class="form-control w-full max-w-xs">
 								<div class="label">
 									<span class="label-text">Total Quantity</span>
 								</div>
 								<div class="flex flex-row items-baseline gap-3">
 									<input
 										type="text"
-										class="w-24 text-right input input-bordered"
+										class="input input-bordered w-24 text-right"
 										bind:value={editQuantity}
 									/>
 									<span>{editUnits}</span>
 								</div>
 							</label>
-							<label class="w-full max-w-xs form-control">
+							<label class="form-control w-full max-w-xs">
 								<div class="label">
 									<span class="label-text">{m.refill_at()}</span>
 								</div>
 								<div class="flex flex-row items-baseline gap-3">
 									<input
 										type="text"
-										class="w-24 text-right input input-bordered"
+										class="input input-bordered w-24 text-right"
 										bind:value={editWarningLevel}
 									/>
 									<span>{editUnits}</span>
@@ -535,5 +536,60 @@
 				</div>
 			</div>
 		</div>
+
+		<h2 class="mt-5 text-xl font-medium">Family Members</h2>
+		<p class="my-1 mb-2 text-sm text-gray-500">
+			Family members will be able to see your medication history in their account. To view someone
+			elses account, they must add you as a family member.
+		</p>
+		<form method="POST" action="?/addFamilyMember" class="flex flex-row gap-3" use:enhance>
+			<div class="flex flex-col">
+				<label class="input input-bordered flex max-w-72 items-center gap-2">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 16 16"
+						fill="currentColor"
+						class="h-4 w-4 opacity-70"
+					>
+						<path
+							d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z"
+						/>
+						<path
+							d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z"
+						/>
+					</svg>
+					<input
+						type="email"
+						class="grow"
+						placeholder="Email"
+						name="familyMemberEmail"
+						required
+						value={form?.familyMemberEmail ?? ''}
+					/>
+				</label>
+				<div class="label">
+					{#if form}
+						<span class={`label-text-alt ${form?.ok ? 'text-success' : 'text-error'}`}
+							>{form?.ok ? '' : 'Error: '}{form?.message}</span
+						>
+					{/if}
+				</div>
+			</div>
+			<button type="submit" class="btn btn-outline btn-success">Add Family Member</button>
+		</form>
+		<ul class="mt-2">
+			{#each data.user?.familyMembers ?? [] as family}
+				<li class="">
+					<form action="?/deleteFamilyMember" method="POST" use:enhance>
+						<input type="text" value={family.id} name="id" required hidden />
+						<input
+							type="submit"
+							class="hover:text-error hover:line-through"
+							value="- {family.familyMember.name} ({family.familyMember.email})"
+						/>
+					</form>
+				</li>
+			{/each}
+		</ul>
 	</div>
 </section>

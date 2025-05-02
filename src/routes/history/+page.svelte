@@ -37,7 +37,7 @@
 		<h1 class="pt-6 text-3xl font-semibold">{getGreeting(data.user!.name.split(' ')[0])}</h1>
 		<p class="my-1 text-sm text-gray-500">{m.greeting_history()}</p>
 		<div class="divider mt-0"></div>
-		<h2 class="text-xl font-medium">History</h2>
+		<h2 class="text-xl font-medium">Your History</h2>
 		<div class="overflow-x-auto">
 			<table class="table mb-12 w-[80vw]">
 				<thead>
@@ -86,5 +86,67 @@
 				</tbody>
 			</table>
 		</div>
+
+		{#if data.user!.familyOf.length === 0}
+			<div class="divider"></div>
+
+			<p class="text-sm text-gray-500">
+				If someone adds you as a family member, you will be able to see their medication history
+				here.
+			</p>
+		{/if}
+
+		{#each data.user!.familyOf as family}
+			<div class="divider"></div>
+			<h2 class="text-xl font-medium">{family.user.name}'s History</h2>
+			<div class="overflow-x-auto">
+				<table class="table mb-12 w-[80vw]">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Dosage</th>
+							<th>Status</th>
+							<th>Scheduled Time</th>
+							<th>Time Taken</th>
+							<th>Date</th>
+						</tr>
+					</thead>
+					<tbody>
+						{#each family.user.history as h, i}
+							<!-- Add divider if date changes -->
+							{#if i > 0 && new Date(h.timestamp).getDate() !== new Date(family.user.history[i - 1].timestamp).getDate()}
+								<tr class="w-full">
+									<!-- <td colspan="6" class="bg-neutral p-1"></td> -->
+
+									<td> </td>
+									<td></td>
+									<td colspan="2"><hr /></td>
+								</tr>
+							{/if}
+							<tr class={h.skip ? 'bg-error text-error-content' : ''}>
+								<td>{h.medication.name}</td>
+								<td>{h.medication.dose} {h.medication.units}</td>
+								<td>{h.skip ? 'Skipped' : 'Taken'}</td>
+								<td>{h.hour}:00</td>
+								<td
+									>{h.timestamp.toLocaleString('en-US', {
+										hour: '2-digit',
+										minute: '2-digit',
+										hour12: false
+									})}</td
+								>
+								<td
+									>{h.timestamp.toLocaleString('en-US', {
+										day: '2-digit',
+										month: '2-digit',
+										year: 'numeric'
+									})}</td
+								>
+							</tr>
+						{/each}
+					</tbody>
+				</table>
+			</div>
+		{/each}
 	</div>
 </section>
