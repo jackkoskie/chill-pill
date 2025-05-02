@@ -189,7 +189,7 @@
 		</div>
 	</div>
 	<div class="flex flex-col items-center gap-4 px-4">
-		<div class="grid w-full max-w-4xl grid-cols-2 gap-4">
+		<div class="flex w-full max-w-4xl justify-between gap-4">
 			<!-- Added grid container -->
 			<div class="stats h-32 w-full bg-neutral text-neutral-content">
 				<!-- Added h-32 -->
@@ -215,14 +215,6 @@
 					<div class="stat-value">
 						{data.medications.filter((m) => m.quantity <= m.warningLevel).length}
 					</div>
-				</div>
-			</div>
-			<div class="stats h-32 w-full bg-neutral text-neutral-content">
-				<!-- Added h-32 -->
-				<div class="stat flex flex-col justify-center">
-					<!-- Added flex and centering -->
-					<div class="stat-title text-neutral-content">Prescription Renewals</div>
-					<div class="stat-value">1</div>
 				</div>
 			</div>
 		</div>
