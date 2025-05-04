@@ -40,5 +40,8 @@
 	"add_medication": "+ Agregar medicamento",
 	"active_medications": "Medicamentos activos",
 	"doses_today": "Dosis hoy",
-	"upcoming_refills": "Próximas recargas"
+	"upcoming_refills": "Próximas recargas",
+	"view_history": "Ver su historial",
+	"refill_medications": "Resurta tus medicamentos",
+	"check_calendar": "Consultar calendario"
 }
