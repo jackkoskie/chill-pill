@@ -43,5 +43,6 @@
 	"upcoming_refills": "Prochaines recharges",
 	"view_history": "Afficher votre historique",
 	"refill_medications": "Rechargez vos médicaments",
-	"check_calendar": "Vérifier le calendrier"
+	"check_calendar": "Vérifier le calendrier",
+	"google_login": " Continuer avec Google"
 }
