@@ -37,5 +37,8 @@
 	"medications_today": "Today's Medications",
 	"actions": "Actions",
 	"medications_up_to_date": "You're all caught up on your medications!",
-	"add_medication": "+ Add Medication"
+	"add_medication": "+ Add Medication",
+	"active_medications": "Active Medications",
+	"doses_today": "Doses Today",
+	"upcoming_refills": "Upcoming Refills"
 }

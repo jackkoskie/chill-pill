@@ -162,7 +162,7 @@
 		<label for="my-drawer" class="btn drawer-button text-2xl">
 			<Icon icon="charm:menu-hamburger" style="font-size: 30px" />
 		</label>
-		<a href="/settings" class="text-m btn w-fit">+ Add Medication</a>
+		<a href="/settings" class="text-m btn w-fit">{m.add_medication()}</a>
 	</div>
 
 	<div class="drawer">
@@ -221,11 +221,11 @@
 	</div>
 
 	<div class="flex flex-row px-12 py-4" id="today">
-		<h1 class="text-4xl font-bold">Today's Medications</h1>
+		<h1 class="text-4xl font-bold">{m.medications_today()}</h1>
 	</div>
 
 	{#if medicationsToTake.length === 0}
-		<p class="py-32 text-center text-3xl">You're all caught up on your medications!</p>
+		<p class="py-32 text-center text-3xl">{m.medications_up_to_date()}</p>
 	{:else}
 		<div
 			class="mx-auto max-w-4xl justify-center overflow-x-auto rounded-box border border-base-content/5 bg-base-100"
@@ -263,7 +263,7 @@
 		</div>
 	{/if}
 	<div class="px-12 py-4" id="actions">
-		<h1 class="text-4xl font-bold">Actions</h1>
+		<h1 class="text-4xl font-bold">{m.actions()}</h1>
 		<div class="mt-3">
 			<div class="flex w-full flex-row items-center justify-center gap-3">
 				<a href="/history" class="btn btn-lg">View your history</a>
