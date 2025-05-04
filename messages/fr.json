@@ -37,5 +37,8 @@
 	"medications_today": "Les médicaments d'aujourd'hui",
 	"actions": "Actes",
 	"medications_up_to_date": "Vous êtes tous à jour dans vos médicaments !",
-	"add_medication": "+ Ajouter des médicaments"
+	"add_medication": "+ Ajouter des médicaments",
+	"active_medications": "Médicaments actifs",
+	"doses_today": "Doses aujourd'hui",
+	"upcoming_refills": "Prochaines recharges"
 }
