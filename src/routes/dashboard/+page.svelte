@@ -147,7 +147,7 @@
 <!-- Top section -->
 <div>
 	<div class="flex w-full flex-row justify-between px-12 py-6" id="dashboard">
-		<h1 class="left-4 top-20 text-4xl font-bold">Dashboard</h1>
+		<h1 class="left-4 top-20 text-4xl font-bold">{m.dashboard()}</h1>
 	</div>
 
 	<div class="flex flex-row justify-center">
@@ -181,7 +181,7 @@
 							</p>
 						</h1>
 					</li>
-					<li><a href="#dashboard">Dashboard</a></li>
+					<li><a href="#dashboard">{m.dashboard()}</a></li>
 					<li><a href="#today">Today's Medication</a></li>
 					<li><a href="#actions">Actions</a></li>
 				</div>
