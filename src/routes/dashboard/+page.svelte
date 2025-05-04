@@ -195,7 +195,7 @@
 				<!-- Added h-32 -->
 				<div class="stat flex flex-col justify-center">
 					<!-- Added flex and centering -->
-					<div class="stat-title text-neutral-content">Active Medications</div>
+					<div class="stat-title text-neutral-content">{m.active_medications()}</div>
 					<div class="stat-value">{allMeds.length}</div>
 				</div>
 			</div>
@@ -203,7 +203,7 @@
 				<!-- Added h-32 -->
 				<div class="stat flex flex-col justify-center">
 					<!-- Added flex and centering -->
-					<div class="stat-title text-neutral-content">Doses Today</div>
+					<div class="stat-title text-neutral-content">{m.doses_today()}</div>
 					<div class="stat-value">{medications.length}</div>
 				</div>
 			</div>
@@ -211,7 +211,7 @@
 				<!-- Added h-32 -->
 				<div class="stat flex flex-col justify-center">
 					<!-- Added flex and centering -->
-					<div class="stat-title text-neutral-content">Upcoming Refills</div>
+					<div class="stat-title text-neutral-content">{m.upcoming_refills()}</div>
 					<div class="stat-value">
 						{data.medications.filter((m) => m.quantity <= m.warningLevel).length}
 					</div>
