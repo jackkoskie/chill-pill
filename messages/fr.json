@@ -33,5 +33,6 @@
 	"delete_med": "Supprimer",
 	"save_med": "Sauvegarder",
 	"settings_description": "Utilisez cette page pour configurer tous les médicaments que vous prenez.",
-	"greeting_history": "Utilisez cette page pour consulter votre historique de médicaments."
+	"greeting_history": "Utilisez cette page pour consulter votre historique de médicaments.",
+	"add_medication": "+ Ajouter des médicaments"
 }
