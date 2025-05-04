@@ -8,8 +8,9 @@
 
 	let selectedDate: Writable<number | null> = writable(null); // Store for selectedDate
 
-	const year = 2025;
-	const month = 3; // April (0-indexed)
+	const today = new Date();
+	let year = today.getFullYear()
+	const month = today.getMonth(); // 0-indexed
 
 	const getDaysInMonth = (year: number, month: number) => new Date(year, month + 1, 0).getDate();
 
