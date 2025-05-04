@@ -34,5 +34,8 @@
 	"save_med": "Ahorrar",
 	"settings_description": "Utilice esta página para configurar todos los medicamentos que toma.",
 	"greeting_history": "Utilice esta página para ver su historial de medicamentos.",
+	"medications_today": "Medicamentos de hoy",
+	"actions": "Comportamiento",
+	"medications_up_to_date": "¡Ya estás al día con tus medicamentos!",
 	"add_medication": "+ Agregar medicamento"
 }

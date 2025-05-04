@@ -34,5 +34,8 @@
 	"save_med": "Sauvegarder",
 	"settings_description": "Utilisez cette page pour configurer tous les médicaments que vous prenez.",
 	"greeting_history": "Utilisez cette page pour consulter votre historique de médicaments.",
+	"medications_today": "Les médicaments d'aujourd'hui",
+	"actions": "Actes",
+	"medications_up_to_date": "Vous êtes tous à jour dans vos médicaments !",
 	"add_medication": "+ Ajouter des médicaments"
 }
