@@ -182,8 +182,8 @@
 						</h1>
 					</li>
 					<li><a href="#dashboard">{m.dashboard()}</a></li>
-					<li><a href="#today">Today's Medication</a></li>
-					<li><a href="#actions">Actions</a></li>
+					<li><a href="#today">{m.medications_today()}</a></li>
+					<li><a href="#actions">{m.actions()}</a></li>
 				</div>
 			</ul>
 		</div>
@@ -266,9 +266,9 @@
 		<h1 class="text-4xl font-bold">{m.actions()}</h1>
 		<div class="mt-3">
 			<div class="flex w-full flex-row items-center justify-center gap-3">
-				<a href="/history" class="btn btn-lg">View your history</a>
-				<a href="/settings" class="btn btn-lg">Refill your Medications</a>
-				<a href="/calendar" class="btn btn-lg">Check Calendar</a>
+				<a href="/history" class="btn btn-lg">{m.view_history()}</a>
+				<a href="/settings" class="btn btn-lg">{m.refill_medications()}</a>
+				<a href="/calendar" class="btn btn-lg">{m.check_calendar()}</a>
 				{#if data.medications.filter((med) => med.quantity <= med.warningLevel).length > 0}
 					<label for="modal_1" class="btn btn-error btn-lg">
 						Warning!
