@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
+	import * as m from '$lib/paraglide/messages.js';
 
 	let { data }: { data: PageData } = $props();
 
@@ -12,7 +13,7 @@
 			<div class="card-body">
 				<div class="card-actions justify-center">
 					<a href="/login/google" class="btn btn-neutral w-60"
-						><Icon icon="devicon:google" /> Continue with Google</a
+						><Icon icon="devicon:google" />{m.google_login()}</a
 					>
 					<!-- <a href="/login/facebook" class="btn btn-neutral w-60"
 						><Icon icon="logos:facebook" /> Continue with Facebook</a
