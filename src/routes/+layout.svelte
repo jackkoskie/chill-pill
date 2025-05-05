@@ -54,7 +54,15 @@
 					tabindex="-2"
 					class="menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box bg-base-100 p-2 shadow"
 				>
-					<li><a>Item 1</a></li>
+					<li>
+						<a href="/calendar">Calendar</a>
+					</li>
+					<li>
+						<a href="/history">History</a>
+					</li>
+					<li>
+						<a href="/settings">Settings</a>
+					</li>
 					<li>
 						<a>Parent</a>
 						<ul class="p-2">
