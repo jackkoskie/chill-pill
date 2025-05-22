@@ -55,5 +55,10 @@
 	"thursday": "Thursday",
 	"friday": "Friday",
 	"saturday": "Saturday",
-	"sunday": "Sunday"
+	"sunday": "Sunday",
+	"your_history": "Your History",
+	"status": "Status",
+	"scheduled_time": "Scheduled Time",
+	"time_taken": "Time Taken",
+	"history_family_notice": "If someone adds you as a family member, you will be able to see their medication history here."
 }

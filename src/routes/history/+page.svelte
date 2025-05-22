@@ -37,13 +37,13 @@
 		<h1 class="pt-6 text-3xl font-semibold">{getGreeting(data.user!.name.split(' ')[0])}</h1>
 		<p class="my-1 text-sm text-gray-500">{m.greeting_history()}</p>
 		<div class="divider mt-0"></div>
-		<h2 class="text-xl font-medium">Your History</h2>
+		<h2 class="text-xl font-medium">{m.your_history()}</h2>
 		<div class="overflow-x-auto">
 			<table class="table mb-12 w-[80vw]">
 				<thead>
 					<tr>
-						<th>Name</th>
-						<th>Dosage</th>
+						<th>{m.name()}</th>
+						<th>{m.dose()}</th>
 						<th>Status</th>
 						<th>Scheduled Time</th>
 						<th>Time Taken</th>

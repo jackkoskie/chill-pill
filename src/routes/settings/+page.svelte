@@ -411,31 +411,31 @@
 								<div class="flex flex-col gap-2">
 									<label class="label cursor-pointer justify-start gap-3 py-0">
 										<input type="checkbox" bind:checked={editDays[0]} class="checkbox" />
-										<span class="label-text">Monday</span>
+										<span class="label-text">{m.monday()}</span>
 									</label>
 									<label class="label cursor-pointer justify-start gap-3 py-0">
 										<input type="checkbox" bind:checked={editDays[1]} class="checkbox" />
-										<span class="label-text">Tuesday</span>
+										<span class="label-text">{m.tuesday()}</span>
 									</label>
 									<label class="label cursor-pointer justify-start gap-3 py-0">
 										<input type="checkbox" bind:checked={editDays[2]} class="checkbox" />
-										<span class="label-text">Wednesday</span>
+										<span class="label-text">{m.wednesday()}</span>
 									</label>
 									<label class="label cursor-pointer justify-start gap-3 py-0">
 										<input type="checkbox" bind:checked={editDays[3]} class="checkbox" />
-										<span class="label-text">Thursday</span>
+										<span class="label-text">{m.thursday()}</span>
 									</label>
 									<label class="label cursor-pointer justify-start gap-3 py-0">
 										<input type="checkbox" bind:checked={editDays[4]} class="checkbox" />
-										<span class="label-text">Friday</span>
+										<span class="label-text">{m.friday()}</span>
 									</label>
 									<label class="label cursor-pointer justify-start gap-3 py-0">
 										<input type="checkbox" bind:checked={editDays[5]} class="checkbox" />
-										<span class="label-text">Saturday</span>
+										<span class="label-text">{m.saturday()}</span>
 									</label>
 									<label class="label cursor-pointer justify-start gap-3 py-0">
 										<input type="checkbox" bind:checked={editDays[6]} class="checkbox" />
-										<span class="label-text">Sunday</span>
+										<span class="label-text">{m.sunday()}</span>
 									</label>
 								</div>
 							</div>
