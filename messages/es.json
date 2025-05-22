@@ -37,15 +37,12 @@
 	"medications_today": "Medicamentos de hoy",
 	"actions": "Comportamiento",
 	"medications_up_to_date": "¡Ya estás al día con tus medicamentos!",
-	"add_medication": "+ Agregar medicamento",
+	"add_medication": "Agregar medicamento",
 	"active_medications": "Medicamentos activos",
 	"doses_today": "Dosis hoy",
 	"upcoming_refills": "Próximas recargas",
 	"view_history": "Ver su historial",
 	"refill_medications": "Resurta tus medicamentos",
 	"check_calendar": "Consultar calendario",
-	"google_login": " Continuar con Google",
-	"family": "Miembros de la familia",
-	"family_access_notice": "Tus familiares podrán ver tu historial de medicamentos en su cuenta. Para ver la cuenta de otra persona, deben agregarte como familiar.",
-	"add_family": "Agregar miembro de la familia"
+	"google_login": " Continuar con Google"
 }

@@ -37,7 +37,7 @@
 	"medications_today": "Today's Medications",
 	"actions": "Actions",
 	"medications_up_to_date": "You're all caught up on your medications!",
-	"add_medication": "+ Add Medication",
+	"add_medication": "Add Medication",
 	"active_medications": "Active Medications",
 	"doses_today": "Doses Today",
 	"upcoming_refills": "Upcoming Refills",
@@ -47,5 +47,13 @@
 	"google_login": " Continue with Google",
 	"family": "Family Members",
 	"family_access_notice": "Family members will be able to see your medication history in their account. To view someone elses account, they must add you as a family member.",
-	"add_family": "Add Family Member"
+	"add_family": "Add Family Member",
+	"quantity_total": "Total Quantity",
+	"monday": "Monday",
+	"tuesday": "Tuesday",
+	"wednesday": "Wednesday",
+	"thursday": "Thursday",
+	"friday": "Friday",
+	"saturday": "Saturday",
+	"sunday": "Sunday"
 }

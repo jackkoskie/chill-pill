@@ -376,18 +376,18 @@
 			<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 			<!-- svelte-ignore a11y_click_events_have_key_events -->
 			<label for="add_modal" class="btn btn-outline btn-success mt-4" onclick={initAddModal}
-				>Add Medication</label
+				>{m.add_medication()}</label
 			>
 
 			<!-- Put this part before </body> tag -->
 			<input type="checkbox" id="add_modal" class="modal-toggle" />
 			<div class="modal modal-middle z-[9999]" role="dialog">
 				<div class="modal-box">
-					<h3 class="text-lg font-bold">Add Medication</h3>
+					<h3 class="text-lg font-bold">{m.add_medication()}</h3>
 					<div class="mt-1 flex flex-col gap-3">
 						<label class="form-control w-full max-w-xs">
 							<div class="label">
-								<span class="label-text">Name</span>
+								<span class="label-text">{m.name()}</span>
 							</div>
 							<input
 								type="text"
@@ -397,17 +397,17 @@
 						</label>
 						<label class="form-control w-full max-w-xs">
 							<div class="label">
-								<span class="label-text">Description</span>
+								<span class="label-text">{m.description()}</span>
 							</div>
 							<textarea
 								class="textarea textarea-bordered h-24 resize-none"
-								placeholder="Description"
+								placeholder={m.description()}
 								bind:value={editDescription}
 							></textarea>
 						</label>
 						<div class="flex flex-row gap-16">
 							<div class="form-control">
-								<div class="label"><span class="label-text">Days to Take</span></div>
+								<div class="label"><span class="label-text">{m.days_to_take()}</span></div>
 								<div class="flex flex-col gap-2">
 									<label class="label cursor-pointer justify-start gap-3 py-0">
 										<input type="checkbox" bind:checked={editDays[0]} class="checkbox" />
@@ -440,7 +440,7 @@
 								</div>
 							</div>
 							<div class="form-control">
-								<div class="label"><span class="label-text">Time to Take</span></div>
+								<div class="label"><span class="label-text">{m.time_to_take()}</span></div>
 								<div class="flex flex-col gap-2">
 									{#each editTime as enabled, time}
 										{#if enabled}
@@ -473,7 +473,7 @@
 						</div>
 						<label class="form-control w-full max-w-xs">
 							<div class="label">
-								<span class="label-text">Dose</span>
+								<span class="label-text">{m.dose()}</span>
 							</div>
 							<div class="flex flex-row gap-3">
 								<input
@@ -498,7 +498,7 @@
 						<div class="flex flex-row gap-3">
 							<label class="form-control w-full max-w-xs">
 								<div class="label">
-									<span class="label-text">Total Quantity</span>
+									<span class="label-text">{m.quantity_total()}</span>
 								</div>
 								<div class="flex flex-row items-baseline gap-3">
 									<input
@@ -530,7 +530,7 @@
 						<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 						<!-- svelte-ignore a11y_click_events_have_key_events -->
 						<label for="add_modal" class="btn btn-outline btn-success" onclick={() => saveMed()}
-							>Save</label
+							>{m.save_med()}</label
 						>
 					</div>
 				</div>
