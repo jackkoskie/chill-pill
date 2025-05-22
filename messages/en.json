@@ -44,5 +44,8 @@
 	"view_history": "View your History",
 	"refill_medications": "Refill your Medications",
 	"check_calendar": "Check Calendar",
-	"google_login": " Continue with Google"
+	"google_login": " Continue with Google",
+	"family": "Family Members",
+	"family_access_notice": "Family members will be able to see your medication history in their account. To view someone elses account, they must add you as a family member.",
+	"add_family": "Add Family Member"
 }

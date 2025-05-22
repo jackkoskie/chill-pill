@@ -537,11 +537,8 @@
 			</div>
 		</div>
 
-		<h2 class="mt-5 text-xl font-medium">Family Members</h2>
-		<p class="my-1 mb-2 text-sm text-gray-500">
-			Family members will be able to see your medication history in their account. To view someone
-			elses account, they must add you as a family member.
-		</p>
+		<h2 class="mt-5 text-xl font-medium">{m.family()}</h2>
+		<p class="my-1 mb-2 text-sm text-gray-500">{m.family_access_notice()}</p>
 		<form method="POST" action="?/addFamilyMember" class="flex flex-row gap-3" use:enhance>
 			<div class="flex flex-col">
 				<label class="input input-bordered flex max-w-72 items-center gap-2">
@@ -575,7 +572,7 @@
 					{/if}
 				</div>
 			</div>
-			<button type="submit" class="btn btn-outline btn-success">Add Family Member</button>
+			<button type="submit" class="btn btn-outline btn-success">{m.add_family()}</button>
 		</form>
 		<ul class="mt-2">
 			{#each data.user?.familyMembers ?? [] as family}
