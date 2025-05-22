@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 	import { writable, derived } from 'svelte/store';
 	import { intToDay, intToTime } from '$lib/utils/converter';
+	import * as m from '$lib/paraglide/messages';
 
 	let { data }: { data: PageData } = $props();
 
@@ -68,7 +69,7 @@
 <div class="flex min-h-screen flex-col gap-6 bg-[#151e46] p-4 text-white md:flex-row">
 	<!-- Calendar section -->
 	<div class="flex-1">
-		<h2 class="mb-4 text-lg font-bold">Medication Schedule</h2>
+		<h2 class="mb-4 text-lg font-bold">{m.medication_schedule()}</h2>
 		<div class="grid grid-cols-7 gap-2 text-center">
 			{#each ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] as day}
 				<div class="font-semibold">{day}</div>
@@ -113,13 +114,13 @@
 						<div class="text-base font-semibold">{med.name}</div>
 						<div class="text-sm text-gray-700">{med.description}</div>
 						<div class="text-xs text-gray-500">
-							Time(s): {intToTime(med.time)
+							{m.time_to_take()}: {intToTime(med.time)
 								.map((t, i) => (t ? `${i.toString().padStart(2, '0')}:00` : null))
 								.filter(Boolean)
 								.join(', ')}
 						</div>
 						{#if med.dose}
-							<div class="text-xs text-gray-500">Dose: {med.dose} {med.units}</div>
+							<div class="text-xs text-gray-500">{m.dose()}: {med.dose} {med.units}</div>
 						{/if}
 					</li>
 				{/each}

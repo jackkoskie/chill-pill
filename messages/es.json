@@ -61,5 +61,6 @@
 	"scheduled_time": "Hora programada",
 	"time_taken": "Tiempo empleado",
 	"history_family_notice": "Si alguien lo agrega como miembro de la familia, podrá ver su historial de medicamentos aquí.",
-	"date": "Fecha"
+	"date": "Fecha",
+	"medication_schedule": "Horario de medicación"
 }
