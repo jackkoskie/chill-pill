@@ -70,6 +70,6 @@
 	"calendar_fri": "Ven",
 	"calendar_sat": "Sam",
 	"calendar_sun": "Dim",
-	"medeication_skip": "Sauter",
-	"medication_taken": "Pris"
+	"medication_taken": "Pris",
+	"medication_skip": "Sauter"
 }

@@ -70,6 +70,6 @@
 	"calendar_fri": "Vie",
 	"calendar_sat": "Sáb",
 	"calendar_sun": "Dom",
-	"medeication_skip": "Omit",
-	"medication_taken": "Tomado"
+	"medication_taken": "Tomado",
+	"medication_skip": "Omit"
 }
