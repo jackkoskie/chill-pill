@@ -69,5 +69,7 @@
 	"calendar_thu": "Jue",
 	"calendar_fri": "Vie",
 	"calendar_sat": "Sáb",
-	"calendar_sun": "Dom"
+	"calendar_sun": "Dom",
+	"medeication_skip": "Omit",
+	"medication_taken": "Tomado"
 }

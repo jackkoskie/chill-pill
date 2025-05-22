@@ -123,7 +123,7 @@
 							<tr class={h.skip ? 'bg-error text-error-content' : ''}>
 								<td>{h.medication.name}</td>
 								<td>{h.medication.dose} {h.medication.units}</td>
-								<td>{h.skip ? 'Skipped' : 'Taken'}</td>
+								<td>{h.skip ? `${m.medication_skip()}` : `${m.medication_taken()}`}</td>
 								<td>{h.hour}:00</td>
 								<td
 									>{h.timestamp.toLocaleString('en-US', {

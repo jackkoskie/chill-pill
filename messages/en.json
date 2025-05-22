@@ -63,11 +63,14 @@
 	"history_family_notice": "If someone adds you as a family member, you will be able to see their medication history here.",
 	"date": "Date",
 	"medication_schedule": "Medication Schedule",
+	"calendar_": "",
 	"calendar_mon": "Mon",
 	"calendar_tue": "Tue",
 	"calendar_wed": "Wed",
 	"calendar_thu": "Thu",
 	"calendar_fri": "Fri",
 	"calendar_sat": "Sat",
-	"calendar_sun": "Sun"
+	"calendar_sun": "Sun",
+	"medication_taken": "Taken",
+	"medication_skip": "Skip"
 }
