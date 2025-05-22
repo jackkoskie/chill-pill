@@ -44,9 +44,9 @@
 					<tr>
 						<th>{m.name()}</th>
 						<th>{m.dose()}</th>
-						<th>Status</th>
-						<th>Scheduled Time</th>
-						<th>Time Taken</th>
+						<th>{m.status()}</th>
+						<th>{m.scheduled_time()}</th>
+						<th>{m.time_taken()}</th>
 						<th>Date</th>
 					</tr>
 				</thead>
@@ -90,10 +90,7 @@
 		{#if data.user!.familyOf.length === 0}
 			<div class="divider"></div>
 
-			<p class="text-sm text-gray-500">
-				If someone adds you as a family member, you will be able to see their medication history
-				here.
-			</p>
+			<p class="text-sm text-gray-500">{m.history_family_notice()}</p>
 		{/if}
 
 		{#each data.user!.familyOf as family}
