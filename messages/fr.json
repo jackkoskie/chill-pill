@@ -44,5 +44,8 @@
 	"view_history": "Afficher votre historique",
 	"refill_medications": "Rechargez vos médicaments",
 	"check_calendar": "Vérifier le calendrier",
-	"google_login": " Continuer avec Google"
+	"google_login": " Continuer avec Google",
+	"family": "Membres de la famille",
+	"family_access_notice": "Les membres de votre famille pourront consulter votre historique de médicaments dans leur compte. Pour consulter le compte d'une autre personne, celle-ci doit vous ajouter comme membre de la famille.",
+	"add_family": "Ajouter un membre de la famille"
 }
