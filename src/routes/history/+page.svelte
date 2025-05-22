@@ -47,7 +47,7 @@
 						<th>{m.status()}</th>
 						<th>{m.scheduled_time()}</th>
 						<th>{m.time_taken()}</th>
-						<th>Date</th>
+						<th>{m.date()}</th>
 					</tr>
 				</thead>
 				<tbody>
