@@ -71,7 +71,7 @@
 	<div class="flex-1">
 		<h2 class="mb-4 text-lg font-bold">{m.medication_schedule()}</h2>
 		<div class="grid grid-cols-7 gap-2 text-center">
-			{#each ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] as day}
+			{#each [`${m.calendar_mon()}`, `${m.calendar_tue()}`, `${m.calendar_wed()}`, `${m.calendar_thu()}`, `${m.calendar_fri()}`, `${m.calendar_sat()}`, `${m.calendar_sun()}`] as day}
 				<div class="font-semibold">{day}</div>
 			{/each}
 
