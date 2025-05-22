@@ -62,5 +62,12 @@
 	"time_taken": "Tiempo empleado",
 	"history_family_notice": "Si alguien lo agrega como miembro de la familia, podrá ver su historial de medicamentos aquí.",
 	"date": "Fecha",
-	"medication_schedule": "Horario de medicación"
+	"medication_schedule": "Horario de medicación",
+	"calendar_mon": "Lun",
+	"calendar_tue": "Mar",
+	"calendar_wed": "Mié",
+	"calendar_thu": "Jue",
+	"calendar_fri": "Vie",
+	"calendar_sat": "Sáb",
+	"calendar_sun": "Dom"
 }
