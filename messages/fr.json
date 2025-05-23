@@ -71,5 +71,12 @@
 	"calendar_sat": "Sam",
 	"calendar_sun": "Dim",
 	"medication_taken": "Pris",
-	"medication_skip": "Ignoré"
+	"medication_skip": "Ignoré",
+	"calendar_days": [
+		{
+			"declarations": [],
+			"selectors": [],
+			"match": {}
+		}
+	]
 }

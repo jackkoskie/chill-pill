@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import { onMount } from 'svelte';
-	import { writable, derived } from 'svelte/store';
+	import { writable, derived, type Writable } from 'svelte/store';
 	import { intToDay, intToTime } from '$lib/utils/converter';
 	import * as m from '$lib/paraglide/messages';
 
