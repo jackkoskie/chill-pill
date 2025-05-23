@@ -71,5 +71,6 @@
 	"calendar_sat": "Sáb",
 	"calendar_sun": "Dom",
 	"medication_taken": "Tomado",
-	"medication_skip": "Saltado"
+	"medication_skip": "Saltado",
+	"navbar_history_btn": "Historia"
 }

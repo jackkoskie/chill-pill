@@ -111,7 +111,7 @@
 						</div>
 						<div>
 							<ul class="menu menu-horizontal p-1">
-								<li><a href="/history">History</a></li>
+								<li><a href="/history">{m.navbar_history_btn()}</a></li>
 							</ul>
 						</div>
 						<div class="dropdown dropdown-end">
