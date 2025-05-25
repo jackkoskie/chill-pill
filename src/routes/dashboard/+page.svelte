@@ -29,7 +29,7 @@
 
 	let medications = data.medications.filter(
 		// Filter out medications that are not being taken today
-		(med) => intToDay(med.days)[new Date().getDay() - 1]
+		(med) => intToDay(med.days)[(new Date().getDay() + 6) % 7]
 	);
 
 	let allMeds = $state(data.medications);
@@ -223,6 +223,8 @@
 	<div class="flex flex-row px-12 py-4" id="today">
 		<h1 class="text-4xl font-bold">{m.medications_today()}</h1>
 	</div>
+
+	<h1>{medicationsToTake.length}</h1>
 
 	{#if medicationsToTake.length === 0}
 		<p class="py-32 text-center text-3xl">{m.medications_up_to_date()}</p>
